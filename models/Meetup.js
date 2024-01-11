@@ -35,7 +35,6 @@ Meetup.init(
             type: DataTypes.BOOLEAN,
             allowNull: false,
         },
-    },
     {
         sequelize,
         timestamps: false,
