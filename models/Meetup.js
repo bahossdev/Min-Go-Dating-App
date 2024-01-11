@@ -28,16 +28,16 @@ Meetup.init(
             allowNull: false,
         },
         event_type: {
-            inPerson: DataTypes.BOOLEAN,
+            type: DataTypes.BOOLEAN,
             allowNull: false,
         },
-        user_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'user',
-                key: 'id',
-            },
-        },
+        // user_id: {
+        //     type: DataTypes.INTEGER,
+        //     references: {
+        //         model: 'user',
+        //         key: 'id',
+        //     },
+        // },
     },
     {
         sequelize,
