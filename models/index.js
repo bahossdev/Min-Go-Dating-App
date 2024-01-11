@@ -1,24 +1,38 @@
-const Interests = require('./Interests');
-const Users = require('./Users');
+const Interest = require('./Interest');
+const User = require('./User');
 const Meetup = require('./Meetup');
+const UserInterest = require('./UserInterest');
+const UserMeetup = require('./UserMeetup');
 
 //Users belongToMany Intersts (through : 'userInterests')
-Users.belongsToMany(Interests, {
-    through: 'user_interest',
+User.belongsToMany(Interest, {
+    // through: 'user_interest',
+    through: UserInterest,
+    foreignKey: 'user_id',
+    timestamps: false,
 })
 
 
-Interests.belongsToMany(Users, {
-    through: 'user_interest',
+Interest.belongsToMany(User, {
+    // through: 'user_interest',
+    through: UserInterest,
+    foreignKey: 'interest_id',
+    timestamps: false,
 })
 
 //Users are connected to other users through meetup
-Users.belongsToMany(Meetup, {
-    through: 'user_meetup',
+User.belongsToMany(Meetup, {
+    // through: 'user_meetup',
+    through: UserMeetup,
+    foreignKey: 'user_id',
+    timestamps: false,
 })
 
-Meetup.belongsToMany(Users, {
-    through: 'user_meetup',
+Meetup.belongsToMany(User, {
+    // through: 'user_meetup',
+    through: UserMeetup,
+    foreignKey: 'meetup_id',
+    timestamps: false,
 })
 
-module.exports = { Interests, Users, Meetup };
+module.exports = { Interest, User, Meetup, UserInterest, UserMeetup };
