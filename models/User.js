@@ -56,24 +56,6 @@ User.init(
         len: [7],
       },
     },
-    // meetup_id: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    //   references: {
-    //     model: 'meetup',
-    //     key: 'id',
-    //   },
-    // },
-    // interest_id: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    //   references: {
-    //     model: 'interest',
-    //     key: 'id',
-    //   },
-    // },
-
-
   },
   {
     hooks: {

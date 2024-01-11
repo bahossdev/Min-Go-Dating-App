@@ -4,48 +4,55 @@
     "description": "Let's enjoy the beauty of a sunset together with a casual evening walk in the lovely Riverside Park.",
     "date": "2024-01-15",
     "time": "19:00:00",
-    "event_type": true
+    "location": "Riverside Park, City",
+    "in_person": true
   },
   {
     "title": "Coffee Hangout at Brew Bliss",
     "description": "How about grabbing a cup of coffee at Brew Bliss? I'd love to get to know you over some good brew and conversation.",
     "date": "2024-02-01",
     "time": "18:30:00",
-    "event_type": true
+    "location": "Brew Bliss, Downtown",
+    "in_person": true
   },
   {
     "title": "Virtual Movie Night Together",
     "description": "Let's cuddle up virtually and enjoy a cozy movie night from our own spaces. Share your favorite snacks!",
     "date": "2024-03-10",
     "time": "20:00:00",
-    "event_type": false
+    "location": "https://zoom.us/example",
+    "in_person": false
   },
   {
     "title": "Moonlit Picnic by the Beach",
     "description": "How about a picnic under the stars at Sunset Cove? It'll be just us, the sound of waves, and some good food.",
     "date": "2024-04-05",
     "time": "21:00:00",
-    "event_type": true
+    "location": "Sunset Cove, Beachfront",
+    "in_person": true
   },
   {
     "title": "Dinner Date with a View",
     "description": "Let's have a fancy dinner date at Skyview Restaurant. The city lights will be our backdrop for the evening.",
     "date": "2024-05-20",
     "time": "19:00:00",
-    "event_type": true
+    "location": "Skyview Restaurant, High Street",
+    "in_person": true
   },
   {
     "title": "Art Gallery Adventure",
     "description": "Explore the art scene downtown with me. We can discuss the pieces and share our thoughts over a cup of coffee afterward.",
     "date": "2024-06-08",
     "time": "15:30:00",
-    "event_type": true
+    "location": "Downtown Art Gallery",
+    "in_person": true
   },
   {
     "title": "Virtual Wine Tasting Night",
     "description": "How about a virtual wine tasting experience? We can discover new flavors together and have a relaxed evening at home.",
     "date": "2024-07-03",
     "time": "18:00:00",
-    "event_type": false
+    "location": "https://zoom.us/example", 
+    "in_person": false
   }
 ]
