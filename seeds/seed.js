@@ -17,14 +17,14 @@ const seedDatabase = async () => {
   for (const meetup of meetupData) {
     await Meetup.create({
       ...meetup,
-      user_id: users[Math.floor(Math.random() * users.length)].id,
+      // user_id: users[Math.floor(Math.random() * users.length)].id,
     });
   }
 
   for (const interest of interestData) {
     await Interest.create({
       ...interest,
-      user_id: users[Math.floor(Math.random() * users.length)].id,
+      // user_id: users[Math.floor(Math.random() * users.length)].id,
     });
   }
   process.exit(0);

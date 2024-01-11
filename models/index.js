@@ -1,24 +1,25 @@
-const Interests = require('./Interests');
-const Users = require('./Users');
+const Interest = require('./Interest');
+const User = require('./User');
 const Meetup = require('./Meetup');
 
 //Users belongToMany Intersts (through : 'userInterests')
-Users.belongsToMany(Interests, {
+//through assigns new names for the tables
+User.belongsToMany(Interest, {
     through: 'user_interest',
 })
 
 
-Interests.belongsToMany(Users, {
+Interest.belongsToMany(User, {
     through: 'user_interest',
 })
 
 //Users are connected to other users through meetup
-Users.belongsToMany(Meetup, {
+User.belongsToMany(Meetup, {
     through: 'user_meetup',
 })
 
-Meetup.belongsToMany(Users, {
+Meetup.belongsToMany(User, {
     through: 'user_meetup',
 })
 
-module.exports = { Interests, Users, Meetup };
+module.exports = { Interest, User, Meetup };

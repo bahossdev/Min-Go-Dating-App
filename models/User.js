@@ -30,51 +30,58 @@ User.init(
       allowNull: false,
     },
     location: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     status: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-    education:{
-        type: DataTypes.STRING,
-        allowNull: false,
-    }, 
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    education: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-        validate: {
-          isEmail: true,
-        },
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: true,
       },
-    meetup_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-            model: 'meetup',
-            key: 'id',
-          },
     },
-    interest_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-            model: 'interest',
-            key: 'id',
-          },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [7],
+      },
     },
+    // meetup_id: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    //   references: {
+    //     model: 'meetup',
+    //     key: 'id',
+    //   },
+    // },
+    // interest_id: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    //   references: {
+    //     model: 'interest',
+    //     key: 'id',
+    //   },
+    // },
 
 
   },
   {
     hooks: {
-      beforeCreate: async (newUserData) => {
+      async beforeCreate(newUserData) {
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;
       },
-      beforeUpdate: async (updatedUserData) => {
+      async beforeUpdate(updatedUserData) {
         updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
         return updatedUserData;
       },

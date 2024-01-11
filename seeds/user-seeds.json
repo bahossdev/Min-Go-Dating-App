@@ -7,7 +7,9 @@
     "location": "Toronto",
     "status": "Single",
     "education": "Bachelors",
-    "email": "janedoe@gmail.com"
+    "email": "janedoe@gmail.com",
+    "password": "1234567"
+    
   },
   {
     "first_name": "Johnny Appleseed",
@@ -16,7 +18,9 @@
     "location": "Toronto",
     "status": "Single",
     "education": "Masters",
-    "email": "johnnyapple@gmail.com"
+    "email": "johnnyapple@gmail.com",
+    "password": "1234567"
+
   },
   {
     "first_name": "Aubrey Graham",
@@ -25,7 +29,8 @@
     "location": "Toronto",
     "status": "Single",
     "education": "High School",
-    "email": "drake@ovosound.com"
+    "email": "drake@ovosound.com",
+    "password": "1234567"
   },
   {
     "first_name": "Justin Bieber",
@@ -34,7 +39,8 @@
     "location": "Toronto",
     "status": "Married",
     "education": "High School",
-    "email": "JustinBiebs@gmail.com"
+    "email": "JustinBiebs@gmail.com",
+    "password": "1234567"
   },
   {
     "first_name": "Avril Lavigne",
@@ -43,7 +49,8 @@
     "location": "Toronto",
     "status": "Single",
     "education": "Bachelors",
-    "email": "sk8ergirl@gmail.com"
+    "email": "sk8ergirl@gmail.com",
+    "password": "1234567"
   }
 ]
 
