@@ -5,16 +5,16 @@ const withAuth = require('../utils/auth');
 //Get all interests
 router.get('/', async (req, res) => {
   try {
-    const interestData = await Interest.findAll({
-      // include: [
-      //   {
-      //     model: User,
-      //     attributes: ['name'],
-      //   },
-      // ],
-    });
+    // const interestData = await Interest.findAll({
+    //   include: [
+    //     {
+    //       model: User,
+    //       attributes: ['name'],
+    //     },
+    //   ],
+    // });
 
-    const interests = interestData.map((interest) => interest.get({ plain: true }));
+    // const interests = interestData.map((interest) => interest.get({ plain: true }));
 
     res.render('homepage', {
       interests,
@@ -26,15 +26,15 @@ router.get('/', async (req, res) => {
 });
 
 //Get a single interest
-router.get('/interest/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const interestData = await Interest.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
+      // include: [
+      //   {
+      //     model: User,
+      //     attributes: ['name'],
+      //   },
+      // ],
     });
 
     const interest = interestData.get({ plain: true });
