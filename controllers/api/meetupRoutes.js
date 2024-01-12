@@ -16,6 +16,7 @@ router.get('/', async (req, res) => {
                 },
             ],
         })
+
         res.status(200).json(meetupData);
     } catch (err) {
         res.status(500).json(err);
@@ -42,9 +43,11 @@ router.get('/:id', async (req, res) => {
             return;
         };
 
+
         res.status(200).json(meetupData);
     } catch (err) {
         res.status(500).json(err);
+
     };
 });
 
@@ -72,6 +75,7 @@ router.put('/:id', async (req, res) => {
         const meetupData = await Meetup.update(req.body, {
             where: {
                 id: req.params.id,
+
                 // user_id: req.session.user_id,
             },
         });
@@ -87,12 +91,14 @@ router.put('/:id', async (req, res) => {
 
 
 router.delete('/:id', async (req, res) => {
+
     // delete one meetup by its `id` value
     try {
         const meetupData = await Meetup.destroy({
             where: {
                 id: req.params.id,
                 // user_id: req.session.user_id,
+
             }
         });
         if (!meetupData) {
