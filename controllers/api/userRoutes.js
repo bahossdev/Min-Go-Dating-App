@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const { User, Interest, UserInterest, Meetup, UserMeetup } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 //Get all user
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   try {
     const userData = await User.findAll({
       attributes: {
@@ -32,7 +33,7 @@ router.get('/', async (req, res) => {
 });
 
 //Get one user
-router.get('/:id', async (req, res) => {
+router.get('/:id', withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
       attributes: {
@@ -102,7 +103,7 @@ router.post('/', async (req, res) => {
 });
 
 // Update a user
-router.put('/:id', async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
   try {
     const userData = await User.update(req.body, {
       where: {
@@ -187,11 +188,8 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-
-
-
 //delete a user
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   try {
     const userData = await User.destroy({
       where: {
@@ -210,8 +208,6 @@ router.delete('/:id', async (req, res) => {
     res.status(500).json(err);
   };
 });
-
-module.exports = router;
 
 //Login
 router.post('/login', async (req, res) => {

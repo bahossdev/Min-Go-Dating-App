@@ -3,7 +3,7 @@ const { Interest, User, UserInterest } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 //Get all interest
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   try {
     const interestData = await Interest.findAll({
       include: [
@@ -29,7 +29,7 @@ router.get('/', async (req, res) => {
 });
 
 //Get a single interest
-router.get('/:id', async (req, res) => {
+router.get('/:id', withAuth, async (req, res) => {
   try {
     const interestData = await Interest.findByPk(req.params.id, {
       include: [
@@ -61,7 +61,7 @@ router.get('/:id', async (req, res) => {
 });
 
 //Create new interest
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const interestData = await Interest.create(req.body);
 
@@ -81,10 +81,8 @@ router.post('/', async (req, res) => {
   };
 });
 
-
-
 //Update an interest
-router.put('/:id', async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
   try {
     const interestData = await Interest.update(req.body, {
       where: {
@@ -118,10 +116,8 @@ router.put('/:id', async (req, res) => {
   };
 });
 
-
-
 //delete an interest
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   try {
     const interestData = await Interest.destroy({
       where: {

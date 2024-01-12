@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
 });
 
 // get one meetup by id
-router.get('/:id', async (req, res) => {
+router.get('/:id', withAuth, async (req, res) => {
     try {
         const meetupData = await Meetup.findByPk(req.params.id, {
             include: [
@@ -49,7 +49,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // create new meetup
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
     try {
         const meetupData = await Meetup.create(req.body);
 
@@ -64,9 +64,7 @@ router.post('/', async (req, res) => {
     };
 });
 
-
-
-router.put('/:id', async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
     // update meetup data
     try {
         const meetupData = await Meetup.update(req.body, {
@@ -85,8 +83,7 @@ router.put('/:id', async (req, res) => {
     };
 });
 
-
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
     // delete one meetup by its `id` value
     try {
         const meetupData = await Meetup.destroy({
