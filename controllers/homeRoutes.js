@@ -1,47 +1,12 @@
 const router = require('express').Router();
-const { Interest, User, Meetup } = require('../models');
+const { Interest, User, Meetup, UserInterest } = require('../models');
 const withAuth = require('../utils/auth');
 
-//Get all interests
+// Render homepage
 router.get('/', async (req, res) => {
   try {
-    const interestData = await Interest.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
-    });
-
-    const interests = interestData.map((interest) => interest.get({ plain: true }));
 
     res.render('homepage', {
-      interests,
-      logged_in: req.session.logged_in
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-//Get a single interest
-router.get('/interest/:id', async (req, res) => {
-  try {
-    const interestData = await Interest.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
-    });
-
-    const interest = interestData.get({ plain: true });
-    console.log(interest);
-
-    res.render('interest', {
-      ...interest,
       logged_in: req.session.logged_in
     });
   } catch (err) {
@@ -55,7 +20,9 @@ router.get('/profile', withAuth, async (req, res) => {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Interest }],
+      include: [
+        { model: Interest, through: UserInterest },
+      ],
     });
 
     const user = userData.get({ plain: true });

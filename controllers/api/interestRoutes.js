@@ -1,28 +1,31 @@
 const router = require('express').Router();
-const { Interest, User } = require('../../models');
-const withAuth = require('../utils/auth');
+const { Interest, User, UserInterest } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 //Get all interest
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
   try {
     const interestData = await Interest.findAll({
       include: [
         {
           model: User,
-          attributes: ['name'],
+          through: UserInterest,
+          attributes: {
+            exclude: ['password']
+          },
         },
       ],
     });
+    res.status(200).json(interestData);
+    // const interests = interestData.map((interest) => interest.get({ plain: true }));
 
-    const interests = interestData.map((interest) => interest.get({ plain: true }));
-
-    res.render('homepage', {
-      interests,
-      logged_in: req.session.logged_in
-    });
+    // res.render('interest', {
+    //   interests,
+    //   logged_in: req.session.logged_in
+    // });
   } catch (err) {
     res.status(500).json(err);
-  }
+  };
 });
 
 //Get a single interest
@@ -32,21 +35,29 @@ router.get('/:id', withAuth, async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ['name'],
+          through: UserInterest,
+          attributes: {
+            exclude: ['password']
+          },
         },
       ],
     });
+    if (!interestData) {
+      res.status(404).json({ message: 'No interest found with this id!' });
+      return;
+  };
+    res.status(200).json(interestData);
 
-    const interest = interestData.get({ plain: true });
-    console.log(interest);
+    // const interest = interestData.get({ plain: true });
+    // console.log(interest);
 
-    res.render('interest', {
-      ...interest,
-      logged_in: req.session.logged_in
-    });
+    // res.render('interest', {
+    //   ...interest,
+    //   logged_in: req.session.logged_in
+    // });
   } catch (err) {
     res.status(500).json(err);
-  }
+  };
 });
 
 //Create new interest
@@ -54,77 +65,76 @@ router.post('/', withAuth, async (req, res) => {
   try {
     const interestData = await Interest.create(req.body);
 
-    req.session.save(() => {
-      req.session.interest_id = interestData.id;
-      req.session.logged_in = true;
+    // req.session.save(() => {
+    //   req.session.interest_id = interestData.id;
+    //   req.session.logged_in = true;
 
-      // Render the 'interest' view with the newly created interest data
-      res.render('interest', {
-        ...interestData.get({ plain: true }),
-        logged_in: true,
-      });
-    });
+    //   // Render the 'interest' view with the newly created interest data
+    //   res.render('interest', {
+    //     ...interestData.get({ plain: true }),
+    //     logged_in: true,
+    //   });
+    // });
+    res.status(200).json(interestData);
   } catch (err) {
     res.status(400).json(err);
-  }
+  };
 });
-
-
 
 //Update an interest
 router.put('/:id', withAuth, async (req, res) => {
-    try {
-      const interestData = await Interest.update(req.body, {
-        where: {
-          id: req.params.id,
-        },
-      });
-  
-      if (!interestData[0]) {
-        res.status(404).json({ message: 'No interest found with this id!' });
-        return;
-      }
-  
-      // Fetch the updated interest data
-      const updatedInterest = await Interest.findByPk(req.params.id, {
-        include: [
-          {
-            model: User,
-            attributes: ['name'],
-          },
-        ],
-      });
-  
-      // Render the 'interest' view with the updated interest data
-      res.render('interest', {
-        ...updatedInterest.get({ plain: true }),
-        logged_in: req.session.logged_in,
-      });
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  });
-  
-  
-  
-//delete a interest
-router.delete('/:id', withAuth,async (req, res) => {
   try {
-    const interestData = await Interest.destroy({
+    const interestData = await Interest.update(req.body, {
       where: {
         id: req.params.id,
+        // user_id: req.session.user_id,
       },
     });
 
     if (!interestData) {
       res.status(404).json({ message: 'No interest found with this id!' });
       return;
-    }
+    };
+    res.status(200).json(interestData);
+    // // Fetch the updated interest data
+    // const updatedInterest = await Interest.findByPk(req.params.id, {
+    //   include: [
+    //     {
+    //       model: User,
+    //       attributes: ['name'],
+    //     },
+    //   ],
+    // });
+
+    // // Render the 'interest' view with the updated interest data
+    // res.render('interest', {
+    //   ...updatedInterest.get({ plain: true }),
+    //   logged_in: req.session.logged_in,
+    // });
+  } catch (err) {
+    res.status(500).json(err);
+  };
+});
+
+//delete an interest
+router.delete('/:id', withAuth, async (req, res) => {
+  try {
+    const interestData = await Interest.destroy({
+      where: {
+        id: req.params.id,
+        // user_id: req.session.user_id,
+      },
+    });
+
+    if (!interestData) {
+      res.status(404).json({ message: 'No interest found with this id!' });
+      return;
+    };
 
     res.status(200).json(interestData);
   } catch (err) {
     res.status(500).json(err);
-  }
+  };
 });
 
 module.exports = router;
