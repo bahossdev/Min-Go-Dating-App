@@ -36,7 +36,7 @@ Meetup.init(
             allowNull: false,
         },
     },
-    
+
     {
         sequelize,
         timestamps: false,
