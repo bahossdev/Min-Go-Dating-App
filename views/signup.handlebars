@@ -1,0 +1,61 @@
+<div class="row mt-4">
+    <div class="col-md-6">
+        <!-- Form for creating a new blog post -->
+        <h3>Sign-Up</h3>
+        <p>To become a member please fill out the form:</p>
+
+        <form class="form signup-form">
+            {{!-- first-name --}}
+            <div class="form-group">
+                <label for="first_name-signup">First Name:</label>
+                <input class="form-input" type="text" id="first_name-signup" name="first-name" required />
+            </div>
+            {{!-- last-name --}}
+            <div class="form-group">
+                <label for="last_name-signup">Last Name: (optional)</label>
+                <input class="form-input" type="text" id="last_name-signup" name="last_name-signup" />
+            </div>
+            {{!-- Age --}}
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input class="form-input" type="text" id="age" name="age" required />
+            </div>
+            <!-- Email Input -->
+            <div class="form-group">
+                <label for="email-signup">Email:</label>
+                <input class="form-input" type="text" id="email-signup" />
+            </div>
+            <!-- Password Input -->
+            <div class="form-group">
+                <label for="password-signup">Password:</label>
+                <input class="form-input" type="password" id="password-signup" />
+            </div>
+            {{!-- Gender --}}
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <input class="form-input" type="text" id="gender" name="gender" required />
+            </div>
+            {{!-- Location --}}
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input class="form-input" type="text" id="location" name="location" />
+            </div>
+            {{!-- Status --}}
+            <div class="form-group">
+                <label for="status">Status: (optional)</label>
+                <input class="form-input" type="text" id="status" name="status" />
+            </div>
+            {{!-- Education --}}
+            <div class="form-group">
+                <label for="education">Education: (optional)</label>
+                <input class="form-input" type="text" id="education" name="education" />
+            </div>
+            {{!-- Signup Button --}}
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">Sign-Up</button>
+            </div>
+        </form>
+    </div>
+
+<!-- Include JavaScript for login functionality -->
+<script src="./js/signup.js"></script>

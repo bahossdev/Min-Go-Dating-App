@@ -1,0 +1,18 @@
+<h2>
+    {{interest.interest_name}}
+</h2>
+
+<h3>Members who enjoy {{interest.interest_name}}:</h3>
+{{#each interest.users as |user|}}
+<div class="row mb-4 userInterest">
+    <div class="col-md-5">
+        <h4>
+            <a class="title" href="/api/users/{{user.id}}"> {{user.first_name}} {{user.last_name}}</a>
+        </h4>
+    </div>
+</div>
+{{/each}}
+
+ <a href="/api/interests">
+ <button>Back to All Interests</button>
+ </a>

@@ -27,7 +27,7 @@ User.init(
     },
     age: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
     },
     gender: {
       type: DataTypes.STRING,
@@ -39,11 +39,11 @@ User.init(
     },
     status: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     education: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     email: {
       type: DataTypes.STRING,
@@ -57,7 +57,7 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [7],
+        len: [6],
       },
     },
   },

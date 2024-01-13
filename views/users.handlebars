@@ -1,0 +1,13 @@
+{{#each users as |user|}}
+<div class="row mb-4 user">
+    <div class="col-md-5">
+        <h2>
+            <a class="title" href="/api/users/{{user.id}}"> {{user.first_name}} {{user.last_name}}</a>
+        </h2>
+    </div>
+</div>
+{{/each}}
+
+<a href="/">
+    <button>Back to HomePage</button>
+</a>

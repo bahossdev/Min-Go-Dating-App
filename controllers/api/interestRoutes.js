@@ -5,24 +5,14 @@ const withAuth = require('../../utils/auth');
 //Get all interest
 router.get('/', withAuth, async (req, res) => {
   try {
-    const interestData = await Interest.findAll({
-      include: [
-        {
-          model: User,
-          through: UserInterest,
-          attributes: {
-            exclude: ['password']
-          },
-        },
-      ],
+    const interestData = await Interest.findAll();
+    
+    const interests = interestData.map((interest) => interest.get({ plain: true }));
+    // res.status(200).json(interestData);
+    res.render('interests', {
+      interests,
+      logged_in: req.session.logged_in
     });
-    res.status(200).json(interestData);
-    // const interests = interestData.map((interest) => interest.get({ plain: true }));
-
-    // res.render('interest', {
-    //   interests,
-    //   logged_in: req.session.logged_in
-    // });
   } catch (err) {
     res.status(500).json(err);
   };
@@ -45,16 +35,14 @@ router.get('/:id', withAuth, async (req, res) => {
     if (!interestData) {
       res.status(404).json({ message: 'No interest found with this id!' });
       return;
-  };
-    res.status(200).json(interestData);
+    };
 
-    // const interest = interestData.get({ plain: true });
-    // console.log(interest);
-
-    // res.render('interest', {
-    //   ...interest,
-    //   logged_in: req.session.logged_in
-    // });
+    const interest = interestData.get({ plain: true });
+    res.render('oneInterest', {
+      interest,
+      logged_in: req.session.logged_in
+    });
+    // res.status(200).json(interestData);
   } catch (err) {
     res.status(500).json(err);
   };
