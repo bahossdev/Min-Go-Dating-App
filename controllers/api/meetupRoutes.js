@@ -5,19 +5,13 @@ const withAuth = require('../../utils/auth');
 // get all meetups
 router.get('/', async (req, res) => {
     try {
-        const meetupData = await Meetup.findAll({
-            include: [
-                {
-                    model: User,
-                    through: UserMeetup,
-                    attributes: {
-                        exclude: ['password']
-                    },
-                },
-            ],
-        })
-
-        res.status(200).json(meetupData);
+        const meetupData = await Meetup.findAll()
+        const meetups = meetupData.map((meetup) => meetup.get({ plain: true }));
+        res.render('meetups', {
+            meetups,
+            logged_in: req.session.logged_in
+          });
+        // res.status(200).json(meetupData);
     } catch (err) {
         res.status(500).json(err);
     }
@@ -42,8 +36,14 @@ router.get('/:id', withAuth, async (req, res) => {
             res.status(404).json({ message: 'No events found with this id!' });
             return;
         };
-
-        res.status(200).json(meetupData);
+        
+        const meetup = meetupData.get({ plain: true });
+        console.log(meetup);
+        res.render('oneMeetup', {
+            meetup,
+          logged_in: req.session.logged_in
+        });
+        // res.status(200).json(meetupData);
     } catch (err) {
         res.status(500).json(err);
     };

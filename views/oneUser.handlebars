@@ -1,0 +1,61 @@
+<h2>
+    {{user.first_name}} {{user.last_name}}
+</h2>
+
+<ul>
+    <li>First Name: {{user.first_name}}</li>
+    <li>Last Name: {{user.last_name}}</li>
+    <li>Age: {{user.age}}</li>
+    <li>Gender: {{user.gender}}</li>
+    <li>Location: {{user.location}}</li>
+    <li>Status: {{user.status}}</li>
+    <li>Education: {{user.education}}</li>
+</ul>
+
+<!-- Display user interests if available -->
+{{#if interests.length}}
+<div class="col-md-6 interest-list">
+    <h3>Interests:</h3>
+
+    {{#each interests as |interest|}}
+    <div class="row mb-2">
+        <div class="col-md-8">
+            <!-- Link to the interest -->
+            <h4><a class="list" href="/api/interests/{{interest.id}}">{{interest.interest_name}}</a></h4>
+        </div>
+        {{!-- <!-- Buttons for updating and deleting a blog -->
+        <div class="col-md-4">
+            <button class="btn btn-sm" update="{{interest.id}}">Update</button>
+            <button class="btn btn-sm btn-danger" delete="{{interest.id}}">Delete</button>
+        </div> --}}
+    </div>
+    {{/each}}
+</div>
+{{/if}}
+</div>
+
+<!-- Display user meetups if available -->
+{{#if meetups.length}}
+<div class="col-md-6 meetup-list">
+    <h3>Meetups:</h3>
+
+    {{#each meetups as |meetup|}}
+    <div class="row mb-2">
+        <div class="col-md-8">
+            <!-- Link to the meetup -->
+            <h4><a class="list" href="/api/meetups/{{meetup.id}}">{{meetup.title}}</a></h4>
+        </div>
+        <!-- Buttons for updating and deleting a blog -->
+        {{!-- <div class="col-md-4">
+            <button class="btn btn-sm" update="{{meetup.id}}">Update</button>
+            <button class="btn btn-sm btn-danger" delete="{{meetup.id}}">Delete</button>
+        </div> --}}
+    </div>
+    {{/each}}
+</div>
+{{/if}}
+</div>
+
+<a href="/api/users">
+    <button>Back to All Users</button>
+</a>

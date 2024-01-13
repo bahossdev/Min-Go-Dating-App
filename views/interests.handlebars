@@ -1,0 +1,13 @@
+{{#each interests as |interest|}}
+<div class="row mb-4 interest">
+    <div class="col-md-5">
+        <h2>
+            <a class="title" href="/api/interests/{{interest.id}}"> {{interest.interest_name}}</a>
+        </h2>
+    </div>
+</div>
+{{/each}}
+
+<a href="/">
+    <button>Back to HomePage</button>
+</a>

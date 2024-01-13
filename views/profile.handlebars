@@ -1,9 +1,118 @@
-<div class="welcome-message">
-    <h1>Welcome to Min-Go Dating App</h1>
-    <p></p>
-    
-    <!-- Button linking to the login page -->
-    <a href="/login"><button class="btn btn-primary cta-button" type="submit">Create an Account</button></a>
+<div class="row">
+    <div class="col-auto">
+        <!-- Greet the user by name -->
+        <h2>Hi, {{first_name}}! 👋🏼 </h2>
+    </div>
+</div>
+
+<ul>
+    <li>First Name: {{first_name}}</li>
+    <li>Last Name: {{last_name}}</li>
+    <li>Age: {{age}}</li>
+    <li>Gender: {{gender}}</li>
+    <li>Location: {{location}}</li>
+    <li>Status: {{status}}</li>
+    <li>Education: {{education}}</li>
+</ul>
+
+<div class="form-group-update">
+    <button type="submit" class="btn btn-primary" id="edit" >Update Profile</button>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <!-- Form for updating user info -->
+
+        <form class="form update-user-form" id="update-form" style="display: none;">
+            <div class="form-group">
+                {{!-- first-name --}}
+                <label for="first-name">First Name:</label>
+                <input class="form-input" type="text" id="first-name" name="first-name" required />
+            </div>
+            <div class="form-group">
+                {{!-- last-name --}}
+                <label for="last-name">Last Name: (optional)</label>
+                <input class="form-input" type="text" id="last-name" name="last-name" />
+            </div>
+            <div class="form-group">
+                {{!-- Age --}}
+                <label for="age">Age:</label>
+                <input class="form-input" type="text" id="age" name="age" required />
+            </div>
+            <div class="form-group">
+                {{!-- Gender --}}
+                <label for="gender">Gender:</label>
+                <input class="form-input" type="text" id="gender" name="gender" required />
+            </div>
+            <div class="form-group">
+                {{!-- Location --}}
+                <label for="location">Location: </label>
+                <input class="form-input" type="text" id="location" name="location" required/>
+            </div>
+            <div class="form-group">
+                {{!-- Status --}}
+                <label for="status">Status: (optional)</label>
+                <input class="form-input" type="text" id="status" name="status" />
+            </div>
+            <div class="form-group">
+                {{!-- Education --}}
+                <label for="education">Education: (optional)</label>
+                <input class="form-input" type="text" id="education" name="education" />
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" id="update">Save </button>
+                <input type="hidden" id="user-id" value="<%= req.session.user_id %>">
+            </div>
+        </form>
+    </div>
+
+    {{#if interests.length}}
+    <div class="col-md-6 interest-list">
+        <!-- Display user interests if available -->
+        <h3>Interests:</h3>
+
+        {{#each interests as |interest|}}
+        <div class="row mb-2">
+            <div class="col-md-8">
+                <!-- Link to the interest -->
+                <h4><a class="list" href="/api/interests/{{interest.id}}">{{interest.interest_name}}</a></h4>
+            </div>
+            <div class="col-md-4">
+                <!-- Buttons for updating and deleting an interest -->
+                <button class="btn btn-sm" update="{{interest.id}}">Update</button>
+                <button class="btn btn-sm btn-danger" delete="{{interest.id}}">Delete</button>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    {{/if}}
+
+    {{#if meetups.length}}
+    <div class="col-md-6 meetup-list">
+        <!-- Display user meetups if available -->
+        <h3>Meetups:</h3>
+
+        {{#each meetups as |meetup|}}
+        <div class="row mb-2">
+            <div class="col-md-8">
+                <!-- Link to the meetup -->
+                <h4><a class="list" href="/api/meetups/{{meetup.id}}">{{meetup.title}}</a></h4>
+            </div>
+            <div class="col-md-4">
+                <!-- Buttons for updating and deleting a meetup -->
+                <button class="btn btn-sm" update="{{meetup.id}}">Update</button>
+                <button class="btn btn-sm btn-danger" delete="{{meetup.id}}">Delete</button>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    {{/if}}
 </div>
 
 
+<a href="/">
+    <button>Back to HomePage</button>
+</a>
+<!-- Include JavaScript for dashboard functionality -->
+<script src="./js/profileUpdate.js"></script>

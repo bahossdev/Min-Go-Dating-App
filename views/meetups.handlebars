@@ -1,0 +1,15 @@
+{{#each meetups as |meetup|}}
+<div class="row mb-4 meetup">
+    <div class="col-md-5">
+        <h2>
+            <a class="title" href="/api/meetups/{{meetup.id}}"> {{meetup.title}}</a>
+        </h2>
+        <!-- Display the author and creation date of the meetup -->
+        {{!-- <p class="owner">Created by {{meetup.user.name}} on {{format_date meetup.date_created}}</p> --}}
+    </div>
+</div>
+{{/each}}
+
+<a href="/">
+    <button>Back to HomePage</button>
+</a>

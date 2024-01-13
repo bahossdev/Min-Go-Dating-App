@@ -5,28 +5,15 @@ const withAuth = require('../../utils/auth');
 //Get all user
 router.get('/', withAuth, async (req, res) => {
   try {
-    const userData = await User.findAll({
-      attributes: {
-        exclude: ['password']
-      },
-      include: [
-        {
-          model: Interest,
-          through: UserInterest,
-        },
-        {
-          model: Meetup,
-          through: UserMeetup,
-        },
-      ],
-    });
-    res.status(200).json(userData);
-    // const users = userData.map((user) => user.get({ plain: true }));
+    const userData = await User.findAll(
+    );
+    const users = userData.map((user) => user.get({ plain: true }));
 
-    // res.render('user', {
-    //   users,
-    //   logged_in: req.session.logged_in
-    // });
+    res.render('users', {
+      users,
+      logged_in: req.session.logged_in
+    });
+    // res.status(200).json(userData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -55,13 +42,14 @@ router.get('/:id', withAuth, async (req, res) => {
       res.status(404).json({ message: 'No user found with this id!' });
       return;
     };
-    res.status(200).json(userData);
-    // const users = userData.map((user) => user.get({ plain: true }));
+    const user = userData.get({ plain: true });
 
-    // res.render('user', {
-    //   users,
-    //   logged_in: req.session.logged_in
-    // });
+    res.render('oneUser', {
+      user,
+      ...user,
+      logged_in: req.session.logged_in
+    });
+    // res.status(200).json(userData);
   } catch (err) {
     res.status(500).json(err);
   };
@@ -72,32 +60,34 @@ router.post('/', async (req, res) => {
   try {
     const userData = await User.create(req.body);
 
-    // req.session.save(() => {
-    //   req.session.user_id = userData.id;
-    //   req.session.logged_in = true;
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
 
-    // });
+    });
 
-    if (req.body.interests.length) {
-      const userInterestArray = req.body.interests.map((interest_id) => {
-        return {
-          user_id: userData.id,
-          interest_id,
-        };
-      });
-      await UserInterest.bulkCreate(userInterestArray);
-    }
-    if (req.body.meetups.length) {
-      const userMeetupArray = req.body.meetups.map((meetup_id) => {
-        return {
-          user_id: userData.id,
-          meetup_id,
-        };
-      });
-      await UserMeetup.bulkCreate(userMeetupArray);
-    }
+    // if (req.body.interests.length) {
+    //   const userInterestArray = req.body.interests.map((interest_id) => {
+    //     return {
+    //       user_id: userData.id,
+    //       interest_id,
+    //     };
+    //   });
+    //   await UserInterest.bulkCreate(userInterestArray);
+    // }
+    // if (req.body.meetups.length) {
+    //   const userMeetupArray = req.body.meetups.map((meetup_id) => {
+    //     return {
+    //       user_id: userData.id,
+    //       meetup_id,
+    //     };
+    //   });
+    //   await UserMeetup.bulkCreate(userMeetupArray);
+    // }
     res.status(200).json(userData);
+
   } catch (err) {
+    console.log(err)
     res.status(400).json(err);
   };
 });
