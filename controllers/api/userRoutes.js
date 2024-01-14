@@ -20,7 +20,7 @@ router.get('/', withAuth, async (req, res) => {
 });
 
 //Get one user
-router.get('/:id', withAuth, async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
       attributes: {
@@ -58,12 +58,13 @@ router.get('/:id', withAuth, async (req, res) => {
 //Create new user
 router.post('/', async (req, res) => {
   try {
+
+    // req.session.user
     const userData = await User.create(req.body);
 
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-
     });
 
     // if (req.body.interests.length) {
@@ -93,13 +94,23 @@ router.post('/', async (req, res) => {
 });
 
 // Update a user
+// withAuth
 router.put('/:id', withAuth, async (req, res) => {
   try {
+
+    // // this object can be accessed from anywhere in the back end and returned
+    // // to the front end
+
+    // req.session.user = req.body.user_id
+
+    // // this return to the front end 
+    // res.send(req.session)
     const userData = await User.update(req.body, {
       where: {
         id: req.params.id,
       },
     });
+
     //update their interest
     if (req.body.interests && req.body.interests.length) {
       const userInterestArray = await UserInterest.findAll({
@@ -171,8 +182,8 @@ router.put('/:id', withAuth, async (req, res) => {
         },
       ],
     });
-
-    res.status(200).json(updatedUser);
+    res.render('profile');
+    // res.status(200).json(updatedUser);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -184,7 +195,7 @@ router.delete('/:id', withAuth, async (req, res) => {
     const userData = await User.destroy({
       where: {
         id: req.params.id,
-        // user_id: req.session.user_id,
+        user_id: req.session.user_id,
       },
     });
 
@@ -219,6 +230,10 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect email or password, please try again' });
       return;
     };
+    console.log(userData);
+    const userId = userData.dataValues.id;
+    console.log(userId);
+    res.cookie('user_id', userId);
 
     req.session.save(() => {
       req.session.user_id = userData.id;

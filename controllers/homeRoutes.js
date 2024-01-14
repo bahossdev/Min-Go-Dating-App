@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Interest, User, Meetup, UserInterest } = require('../models');
+const { Interest, User, Meetup, UserInterest, UserMeetup } = require('../models');
 const withAuth = require('../utils/auth');
 
 // Render homepage
@@ -21,7 +21,7 @@ router.get('/profile', withAuth, async (req, res) => {
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
       include: [
-        { model: Interest, through: UserInterest },
+        { model: Interest, through: UserInterest}, {model: Meetup, through: UserMeetup },
       ],
     });
 
@@ -40,7 +40,7 @@ router.get('/profile', withAuth, async (req, res) => {
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/profile');
+    res.redirect('/homepage');
     return;
   }
 

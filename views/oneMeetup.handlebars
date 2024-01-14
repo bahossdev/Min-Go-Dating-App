@@ -1,6 +1,10 @@
 <h2>
     {{meetup.title}}
 </h2>
+<h3>Description:</h3>
+<p>{{meetup.description}}</p>
+<h3>Date and Time:</h3>
+<p>{{format_date meetup.date}} at {{meetup.time}}</p>
 
 <h3>Members who are going to this meetup:</h3>
 {{#each meetup.users as |user|}}
