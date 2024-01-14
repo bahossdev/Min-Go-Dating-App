@@ -23,16 +23,11 @@
             <!-- Link to the interest -->
             <h4><a class="list" href="/api/interests/{{interest.id}}">{{interest.interest_name}}</a></h4>
         </div>
-        {{!-- <!-- Buttons for updating and deleting a blog -->
-        <div class="col-md-4">
-            <button class="btn btn-sm" update="{{interest.id}}">Update</button>
-            <button class="btn btn-sm btn-danger" delete="{{interest.id}}">Delete</button>
-        </div> --}}
     </div>
     {{/each}}
 </div>
 {{/if}}
-</div>
+
 
 <!-- Display user meetups if available -->
 {{#if meetups.length}}
@@ -45,17 +40,12 @@
             <!-- Link to the meetup -->
             <h4><a class="list" href="/api/meetups/{{meetup.id}}">{{meetup.title}}</a></h4>
         </div>
-        <!-- Buttons for updating and deleting a blog -->
-        {{!-- <div class="col-md-4">
-            <button class="btn btn-sm" update="{{meetup.id}}">Update</button>
-            <button class="btn btn-sm btn-danger" delete="{{meetup.id}}">Delete</button>
-        </div> --}}
     </div>
     {{/each}}
 </div>
 {{/if}}
-</div>
 
 <a href="/api/users">
     <button>Back to All Users</button>
 </a>
+</div>

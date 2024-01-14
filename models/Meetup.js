@@ -19,6 +19,10 @@ Meetup.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
+        owner_id: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+        },
         date: {
             type: DataTypes.DATE,
             allowNull: false,
