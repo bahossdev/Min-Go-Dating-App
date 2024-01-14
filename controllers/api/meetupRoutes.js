@@ -3,14 +3,14 @@ const { Meetup, User, UserMeetup } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // get all meetups
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
         const meetupData = await Meetup.findAll()
         const meetups = meetupData.map((meetup) => meetup.get({ plain: true }));
         res.render('meetups', {
             meetups,
             logged_in: req.session.logged_in
-          });
+        });
         // res.status(200).json(meetupData);
     } catch (err) {
         res.status(500).json(err);
@@ -36,12 +36,12 @@ router.get('/:id', withAuth, async (req, res) => {
             res.status(404).json({ message: 'No events found with this id!' });
             return;
         };
-        
+
         const meetup = meetupData.get({ plain: true });
         console.log(meetup);
         res.render('oneMeetup', {
             meetup,
-          logged_in: req.session.logged_in
+            logged_in: req.session.logged_in
         });
         // res.status(200).json(meetupData);
     } catch (err) {
@@ -53,13 +53,28 @@ router.get('/:id', withAuth, async (req, res) => {
 router.post('/', withAuth, async (req, res) => {
     try {
         const meetupData = await Meetup.create(req.body);
+        console.log(meetupData);
+        const userId = req.body.users;
+        console.log(userId);
+        const meetupId = meetupData.dataValues.id;
+        console.log(meetupId);
 
+        req.session.save(() => {
+            req.session.user_id = userId;
+            req.session.logged_in = true;
+          });
 
-        // req.session.save(() => {
-        //     req.session.user_id = meetupData.id;
-        //     req.session.logged_in = true;
+        if (req.body.users.length) {
 
-        // });
+            const userMeetupArray = {
+                meetup_id: meetupId,
+                user_id: userId
+            }
+            console.log('array:' + userMeetupArray);
+
+            await UserMeetup.create(userMeetupArray);
+        }
+
         res.status(200).json(meetupData);
     } catch (err) {
         res.status(400).json(err);

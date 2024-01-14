@@ -6,11 +6,12 @@
 .thumbnail {
     width: 300px;
     height: 200px;
-    margin: 20px;
+    /* margin: 20px; */
     border-radius: 15px;
 }
 
 .card {
+    background-color: transparent;
     position: relative;
     display: inline-block;
     margin: 10px;
