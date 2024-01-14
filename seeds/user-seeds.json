@@ -36,6 +36,7 @@
   {
     "first_name": "Justin",
     "last_name": "Bieber",
+    "photo": "/upload/jb.jpg",
     "age": 29,
     "gender": "Male",
     "location": "Toronto",

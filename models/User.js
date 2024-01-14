@@ -25,6 +25,10 @@ User.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    photo: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     age: {
       type: DataTypes.INTEGER,
       allowNull: false,

@@ -1,3 +1,4 @@
+// function to show update form
 const showForm = async (event) => {
   event.preventDefault();
   // console.log('clicked!')
@@ -6,7 +7,12 @@ const showForm = async (event) => {
   form.style.display = (form.style.display === 'none') ? 'block' : 'none';
 }
 
-document.getElementById('edit').addEventListener('click', showForm);
+// function to show upload pic form
+const showPicForm = async (event) => {
+  event.preventDefault();
+  const picForm = document.querySelector('#upload-pic')
+  picForm.style.display = (picForm.style.display === 'none') ? 'block' : 'none';
+}
 
 const updateFormHandler = async (event) => {
   event.preventDefault();
@@ -55,6 +61,11 @@ const updateFormHandler = async (event) => {
   };
 };
 
+document.getElementById('edit').addEventListener('click', showForm);
+
+document.getElementById('upload-pic-btn').addEventListener('click', showPicForm);
+
 document
   .querySelector('.update-user-form')
   .addEventListener('submit', updateFormHandler);
+
