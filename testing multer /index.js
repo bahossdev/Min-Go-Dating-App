@@ -11,6 +11,8 @@ const app = express()
 //handlebars init
 app.set('view engine', 'hbs');
 app.use(express.static('./public'))
+
+//this one I didn't add yet
 app.get('/', (req, res) => res.render('index')) //add this to each indvidual route since they render seperately 
 
 //set storage 
