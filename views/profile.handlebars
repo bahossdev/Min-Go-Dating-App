@@ -68,6 +68,7 @@
 <div class="col-md-6">
     <!-- Form for updating user info -->
     <form class="form update-user-form" id="update-form" style="display: none;">
+
         {{!-- first-name --}}
         <div class="form-group">
             <label for="first-name">First Name:</label>
@@ -109,6 +110,22 @@
         </div>
     </form>
 </div>
+
+        {{!-- form creating image upload and submit --}}
+        <div>
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+                <div class="file-field input-field">
+                    <div class="btn grey">
+                        <span>File</span>
+                        <input name="myImage" type="file">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
+                </div>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+        </div>
 <div>
     <!-- Form for adding new Meetup -->
     <form class="form meetup-form" id="meetup-form" style="display: none;">
