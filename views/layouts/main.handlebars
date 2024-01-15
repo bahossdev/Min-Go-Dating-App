@@ -7,7 +7,21 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/style.css">
-</head>
+{{!-- KUNALS UPDATE FOR STYLING THE BACKGROUND IMAGE, MAYBE ADD TO CSS FILE? MOVED THIS TO THE HOMEPAGE VIEW,  --}}
+
+{{!-- <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    body {
+      background-image: url("/images/holdinghands.jpg");
+      background-size: cover; /* Adjust this based on your needs */
+      background-position: center; /* Adjust this based on your needs */
+      background-attachment: fixed; /* Keeps the background fixed when scrolling */
+    }
+  </style>
+</head> --}}
 <body>
 
 <div class="container is-relative">
@@ -22,12 +36,11 @@
         <div class="columns is-vcentered">
           <!-- Image Column -->
           <div class="column">
-            <figure class="image is-256x256 is-rounded box" id="logo">
-              <img src="/images/logos/bigLogo.jpeg" alt="Your Logo">
-            </figure>
+            {{!-- <figure class="image is-256x256 is-rounded box" id="logo">
+            </figure> --}}
           </div>
           <!-- Navbar items -->
-          <div class="column is-four-fifths">
+          {{!-- <div class="column is-four-fifths">
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">Menu</a>
               <div class="navbar-dropdown">
@@ -41,8 +54,18 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="navbar-end">
+      </div> --}}
+
+      <div class="topnav">
+        {{!-- homepage link is not working --}}
+  <a class="active" href="/">Home</a>
+  <a class="navbar-item" href="/api/interests">Interests</a>
+  <a class="navbar-item" href="/api/meetups">Meetups</a>
+  <a class="navbar-item" href="/profile">Profile</a>
+</div>
+      
+      {{!-- removed the profile and login buttons --}}
+      {{!-- <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
             <a class="button is-info is-focused">
@@ -51,7 +74,7 @@
             <a class="button is-light">
               Log in
             </a>
-          </div>
+          </div> --}}
         </div>
       </div>
     </div>
@@ -102,11 +125,11 @@
     </div>
   </div> --}}
 
-  <section class="hero is-large">
+  {{!-- <section class="hero is-large">
     <image holdinghands class="background-image" source src="/images/holdinghands.jpg"></image>
     <div class="hero-body"></div>
-  </section>
-
+  </section> --}}
+{{!-- 
   <section class="section">
     <div class="container">
       <div class="columns is-vcentered">
@@ -119,7 +142,7 @@
         </p>
       </div>
     </div>
-  </section>
+  </section> --}}
 
   <div class="flex-column justify-space-around">
     <header class="display-flex justify-space-between align-center p-2">
