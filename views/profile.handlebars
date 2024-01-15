@@ -83,7 +83,7 @@
 
         {{!-- first-name --}}
         <div class="form-group">
-            <label for="first-name">First Name:</label>
+            <label for="first-name">* First Name:</label>
             <input class="form-input" type="text" id="first-name" name="first-name" required />
         </div>
         {{!-- last-name --}}
@@ -93,13 +93,14 @@
         </div>
         {{!-- Age --}}
         <div class="form-group">
-            <label for="age">Age:</label>
+            <label for="age">* Age:</label>
             <input class="form-input" type="text" id="age" name="age" required />
         </div>
         {{!-- Gender --}}
         <div class="form-group">
-            <label for="gender">Gender:</label>
+            <label for="gender">* Gender:</label>
             <select class="form-input" id="gender" name="gender" required>
+                <option value="">Gender</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
                 <option value="Other">Other</option>
@@ -107,13 +108,14 @@
         </div>
         {{!-- Location --}}
         <div class="form-group">
-            <label for="location">Location: </label>
+            <label for="location">* Location: </label>
             <input class="form-input" type="text" id="location" name="location" required />
         </div>
         <!-- Status -->
         <div class="form-group">
             <label for="status">Status: (optional)</label>
             <select class="form-input" id="status" name="status">
+                <option value="">Status</option>
                 <option value="Single">Single</option>
                 <option value="Married">Married</option>
                 <option value="Divorced/widowed">Divorced/Widowed</option>
@@ -123,6 +125,7 @@
         <div class="form-group">
             <label for="education">Education: (optional)</label>
             <select class="form-input" id="education" name="education">
+                <option value="">Education</option>
                 <option value="High-school">High School</option>
                 <option value="College">College</option>
                 <option value="Bachelors">Bachelor's Degree</option>
