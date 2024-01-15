@@ -139,8 +139,9 @@ border-radius: var(--rounded);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 25px;
 }
-#list-border h3 {
+/* #list-border h3 {
     text-decoration: underline; /* Add underline to the h3 element inside #list-border */
+ */
 
 /*homepage cards container*/
 #cards-container {
@@ -164,4 +165,10 @@ border-radius: var(--rounded);
     border: none;
     box-shadow: 0 10px 400px rgba(0, 0, 0, 0.2);
 
+}
+
+#list-border-meetup a.title {
+    font-size: 18px;
+    border: none;
+    box-shadow: none;
 }
