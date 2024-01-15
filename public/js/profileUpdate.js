@@ -79,9 +79,52 @@ const updateFormHandler = async (event) => {
   }
 };
 
+// to remove an interest
+const removeInterest = async (event) => {
+  event.preventDefault();
+  const button = event.target;
+  const interestId = button.getAttribute('data-interest-id');
+
+  const response = await fetch(`/api/interests/${interestId}/remove`, {
+    method: 'DELETE',
+    body: JSON.stringify({ users: userId }),
+    headers: { 'Content-Type': 'application/json' },
+  });
+  if (response.ok) {
+    document.location.replace('/profile');
+  } else {
+    alert(response.statusText);
+  }
+}
+
+// to remove a meetup
+const unattendMeetup = async (event) => {
+  event.preventDefault();
+  const button = event.target;
+  const meetupId = button.getAttribute('data-meetup-id');
+
+  const response = await fetch(`/api/meetups/${meetupId}/remove`, {
+    method: 'DELETE',
+    body: JSON.stringify({ users: userId }),
+    headers: { 'Content-Type': 'application/json' },
+  });
+  if (response.ok) {
+    document.location.replace('/profile');
+  } else {
+    alert(response.statusText);
+  }
+}
 
 document.getElementById('edit').addEventListener('click', showForm);
 
 document.getElementById('upload-pic-btn').addEventListener('click', showPicForm);
 
 document.querySelector('.update-user-form').addEventListener('submit', updateFormHandler);
+
+document.querySelectorAll('.remove-interest').forEach(button => {
+  button.addEventListener('click', removeInterest);
+});
+
+document.querySelectorAll('.unattend-meetup').forEach(button => {
+  button.addEventListener('click', unattendMeetup);
+});

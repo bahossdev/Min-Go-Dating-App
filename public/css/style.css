@@ -19,7 +19,6 @@
 
 }
 
-
 .navbar-start {
     margin-left: auto;
   }
@@ -141,6 +140,7 @@ border-radius: var(--rounded);
 }
 #list-border h3 {
     text-decoration: underline; /* Add underline to the h3 element inside #list-border */
+}
 
 /*homepage cards container*/
 #cards-container {

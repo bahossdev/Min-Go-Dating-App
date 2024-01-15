@@ -5,11 +5,22 @@
 <p>{{meetup.description}}</p>
 <h3>Date and Time:</h3>
 <p>{{format_date meetup.date}} at {{meetup.time}}</p>
- {{!-- {{#if meetup.owner_id}}
-        <p class="owner">Created by 
-            {{meetup.users.first_name}} --}}
-             {{!-- on {{format_date meetup.date_created}}</p> --}}
-        {{!-- {{/if}} --}}
+{{!-- {{#if meetup.owner_id}}
+<p class="owner">Created by
+    {{meetup.users.first_name}} --}}
+    {{!-- on {{format_date meetup.date_created}}</p> --}}
+{{!-- {{/if}} --}}
+
+{{#if meetup.userJoined}}
+<p>You have joined to this meetup. Have fun! 🤩
+    <button type="submit" class="btn btn-danger join
+    active" id="join" data-meetup-id="{{meetup.id}}">Unattend</button>
+</p>
+{{else}}
+<p>Would you like to go?
+    <button type="submit" class="btn btn-primary join inactive" id="join" data-meetup-id="{{meetup.id}}">Attend</button>
+</p>
+{{/if}}
 
 <h3>Members who are going to this meetup:</h3>
 {{#each meetup.users as |user|}}
@@ -22,6 +33,8 @@
 </div>
 {{/each}}
 
- <a href="/api/meetups">
- <button>Back to All Meetups</button>
- </a>
+<a href="/api/meetups">
+    <button>Back to All Meetups</button>
+</a>
+
+<script src="/js/joinMeetup.js"></script>
