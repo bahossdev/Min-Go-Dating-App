@@ -5,9 +5,15 @@
     </div>
 </div>
 <div>
+    {{#if photo }}
     <section class="card">
         <img src="{{photo}}" class="thumbnail">
     </section>
+    {{else}}
+    <section class="card">
+        <img src="/upload/nogenderimg.jpg" class="thumbnail">
+    </section>
+    {{/if}}
 </div>
 <ul>
     <li>First Name: {{first_name}}</li>
@@ -92,31 +98,46 @@
         {{!-- Gender --}}
         <div class="form-group">
             <label for="gender">Gender:</label>
-            <input class="form-input" type="text" id="gender" name="gender" required />
+            <select class="form-input" id="gender" name="gender" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
         </div>
         {{!-- Location --}}
         <div class="form-group">
             <label for="location">Location: </label>
             <input class="form-input" type="text" id="location" name="location" required />
         </div>
-        {{!-- Status --}}
+        <!-- Status -->
         <div class="form-group">
             <label for="status">Status: (optional)</label>
-            <input class="form-input" type="text" id="status" name="status" />
+            <select class="form-input" id="status" name="status">
+                <option value="Single">Single</option>
+                <option value="Married">Married</option>
+                <option value="Divorced/widowed">Divorced/Widowed</option>
+            </select>
         </div>
-        {{!-- Education --}}
+        <!-- Education -->
         <div class="form-group">
             <label for="education">Education: (optional)</label>
-            <input class="form-input" type="text" id="education" name="education" />
+            <select class="form-input" id="education" name="education">
+                <option value="High-school">High School</option>
+                <option value="College">College</option>
+                <option value="Bachelors">Bachelor's Degree</option>
+                <option value="Masters">Master's Degree</option>
+                <option value="Doctorate">Doctorate</option>
+            </select>
         </div>
 
         <div class="form-group">
             <button type="submit" class="btn btn-primary" id="update">Save</button>
         </div>
     </form>
-    {{!-- form creating image upload and submit --}}
 
-    <form class="form upload-pic" id="upload-pic" action="/profile/upload" method="POST" enctype="multipart/form-data" style="display: none;">
+    {{!-- form creating image upload and submit --}}
+    <form class="form upload-pic" id="upload-pic" action="/profile/upload" method="POST" enctype="multipart/form-data"
+        style="display: none;">
         <div class="file-field input-field">
             <div class="btn grey">
                 <span>File</span>
@@ -131,10 +152,8 @@
 
 </div>
 
-
-
 <div>
-    <!-- Form for adding new Meetup -->
+    <!-- Form for adding or editing new Meetup -->
     <form class="form meetup-form" id="meetup-form" style="display: none;">
         {{!-- meetup title --}}
         <div class="form-group">
@@ -144,8 +163,7 @@
         {{!-- meetup description --}}
         <div class="form-group">
             <label for="description">Meetup Description:</label>
-            <textarea class="form-input" type="text" id="description" name="description" required />
-            </textarea>
+            <textarea class="form-input" id="description" name="description" required></textarea>
         </div>
         {{!-- meetup date --}}
         <div class="form-group">
@@ -172,7 +190,7 @@
         </div>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-primary" id="create-meetup">Create</button>
+            <button type="submit" class="btn btn-primary" id="submit-meetup">Submit</button>
         </div>
     </form>
 

@@ -6,7 +6,7 @@ const withAuth = require('../../utils/auth');
 router.get('/', withAuth, async (req, res) => {
   try {
     const interestData = await Interest.findAll();
-    
+
     const interests = interestData.map((interest) => interest.get({ plain: true }));
     // res.status(200).json(interestData);
     res.render('interests', {
@@ -83,22 +83,49 @@ router.put('/:id', withAuth, async (req, res) => {
       res.status(404).json({ message: 'No interest found with this id!' });
       return;
     };
-    res.status(200).json(interestData);
-    // // Fetch the updated interest data
-    // const updatedInterest = await Interest.findByPk(req.params.id, {
-    //   include: [
-    //     {
-    //       model: User,
-    //       attributes: ['name'],
-    //     },
-    //   ],
-    // });
 
-    // // Render the 'interest' view with the updated interest data
-    // res.render('interest', {
-    //   ...updatedInterest.get({ plain: true }),
-    //   logged_in: req.session.logged_in,
-    // });
+    const userId = req.body.users;
+    const interestId = req.params.id;
+    req.session.save(() => {
+      req.session.user_id = userId;
+      req.session.logged_in = true;
+    });
+
+    if (req.body.users.length) {
+
+      const userInterestData = {
+        interest_id: interestId,
+        user_id: userId
+      }
+      await UserInterest.create(userInterestData);
+    }
+
+    res.status(200).json(interestData);
+  } catch (err) {
+    res.status(500).json(err);
+  };
+});
+
+//Remove an interest from a user
+router.delete('/:id/remove', withAuth, async (req, res) => {
+  try {
+    const interestId = req.params.id;
+    const userId = req.body.users;
+
+    req.session.save(() => {
+      req.session.user_id = userId;
+      req.session.logged_in = true;
+    });
+
+    const userInterestData = await UserInterest.destroy({
+      where: {
+        interest_id: interestId,
+        user_id: userId
+        // user_id: req.session.user_id,
+      },
+    });
+
+    res.status(200).json(userInterestData);
   } catch (err) {
     res.status(500).json(err);
   };
