@@ -1013,7 +1013,16 @@ a:hover {
   color: #d9e9e8;
 }
 
+.btn.btn-primary-homepage {
+  background-color: #2d3e50; 
+  color: #d9e9e8;
+}
+
 .btn.btn-primary:hover {
+  background-color: #57779a;
+}
+
+.btn.btn-primary-homepage:hover {
   background-color: #57779a;
 }
 
