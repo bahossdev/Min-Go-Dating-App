@@ -5,6 +5,11 @@
 <p>{{meetup.description}}</p>
 <h3>Date and Time:</h3>
 <p>{{format_date meetup.date}} at {{meetup.time}}</p>
+ {{!-- {{#if meetup.owner_id}}
+        <p class="owner">Created by 
+            {{meetup.users.first_name}} --}}
+             {{!-- on {{format_date meetup.date_created}}</p> --}}
+        {{!-- {{/if}} --}}
 
 <h3>Members who are going to this meetup:</h3>
 {{#each meetup.users as |user|}}

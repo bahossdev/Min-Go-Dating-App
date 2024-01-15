@@ -11,16 +11,28 @@
                 {{/if}}
                 <h3 class="text-center">{{interest.interest_name}}</h3>
             </a>
-            <button class="heart-button" data-interest-id="{{interest.id}}" onclick="toggleInterest(this)">
-                &#x2665;
-            </button>
+        {{!-- <button class="heart-button {{#if interest.userHasInterest}}active{{else}}inactive{{/if}}" id="heart-button"
+            data-interest-id="{{interest.id}}">
+            &#x2665;
+        </button> --}}
+        {{#if interest.userHasInterest}}
+                <button class="heart-button active" id="heart-button"
+            data-interest-id="{{interest.id}}">
+            &#x2665;
+        </button>
+        {{/if}}
         </section>
     </div>
     {{/each}}
 </div>
+<div class="form-new-interest">
+    <a href="/api/interests/createInterest"><button type="submit" class="btn btn-primary" id="new-interest">Add New
+            Interest</button>
+    </a>
 
-<a href="/">
-    <button>Back to HomePage</button>
-</a>
+
+    <a href="/">
+        <button>Back to HomePage</button>
+    </a>
 
 <script src="/js/heart.js"></script>
