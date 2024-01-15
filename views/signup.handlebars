@@ -33,22 +33,36 @@
             {{!-- Gender --}}
             <div class="form-group">
                 <label for="gender">Gender:</label>
-                <input class="form-input" type="text" id="gender" name="gender" required />
+                <select class="form-input" id="gender" name="gender" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
             </div>
             {{!-- Location --}}
             <div class="form-group">
                 <label for="location">Location:</label>
                 <input class="form-input" type="text" id="location" name="location" />
             </div>
-            {{!-- Status --}}
+            <!-- Status -->
             <div class="form-group">
                 <label for="status">Status: (optional)</label>
-                <input class="form-input" type="text" id="status" name="status" />
+                <select class="form-input" id="status" name="status">
+                    <option value="Single">Single</option>
+                    <option value="Married">Married</option>
+                    <option value="Divorced/widowed">Divorced/Widowed</option>
+                </select>
             </div>
-            {{!-- Education --}}
+            <!-- Education -->
             <div class="form-group">
                 <label for="education">Education: (optional)</label>
-                <input class="form-input" type="text" id="education" name="education" />
+                <select class="form-input" id="education" name="education">
+                    <option value="High-school">High School</option>
+                    <option value="College">College</option>
+                    <option value="Bachelors">Bachelor's Degree</option>
+                    <option value="Masters">Master's Degree</option>
+                    <option value="Doctorate">Doctorate</option>
+                </select>
             </div>
             {{!-- Signup Button --}}
             <div class="form-group">
@@ -57,5 +71,5 @@
         </form>
     </div>
 
-<!-- Include JavaScript for login functionality -->
-<script src="./js/signup.js"></script>
+    <!-- Include JavaScript for login functionality -->
+    <script src="./js/signup.js"></script>

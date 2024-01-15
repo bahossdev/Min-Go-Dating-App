@@ -3,6 +3,7 @@
   {
     "first_name": "Jane ",
     "last_name": "Doe",
+    "photo": "/upload/jane.jpg",
     "age": 25,
     "gender": "Female",
     "location": "Toronto",
@@ -14,6 +15,7 @@
   {
     "first_name": "Johnny",
     "last_name": "Appleseed",
+    "photo": "/upload/apple.jpg",
     "age": 27,
     "gender": "Male",
     "location": "Burlington",
@@ -25,6 +27,7 @@
   {
     "first_name": "Aubrey",
     "last_name": "Graham",
+    "photo": "/upload/aubrey.jpg",
     "age": 37,
     "gender": "Male",
     "location": "North York",
@@ -48,6 +51,7 @@
   {
     "first_name": "Avril",
     "last_name": "Lavigne",
+    "photo": "/upload/avril.jpg",
     "age": 39,
     "gender": "Female",
     "location": "Aurora",

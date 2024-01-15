@@ -1,18 +1,41 @@
 <h2>
     {{interest.interest_name}}
 </h2>
-
-<h3>Members who enjoy {{interest.interest_name}}:</h3>
-{{#each interest.users as |user|}}
-<div class="row mb-4 userInterest">
-    <div class="col-md-5">
-        <h4>
-            <a class="title" href="/api/users/{{user.id}}"> {{user.first_name}} {{user.last_name}}</a>
-        </h4>
-    </div>
+<div>
+    {{#if interest.photo }}
+    <section class="card">
+        <img src="{{interest.photo}}" class="thumbnail">
+        <button class="heart-button" id="heart-button" data-interest-id="{{interest.id}}" class="inactive">
+            &#x2665;
+        </button> 
+    </section>
+    {{else}}
+    <section class="card">
+        <img src="/upload/interests/no-photo.jpg" class="thumbnail">
+    </section>
+    {{/if}}
 </div>
-{{/each}}
 
- <a href="/api/interests">
- <button>Back to All Interests</button>
- </a>
+{{!-- show users who have added this interest --}}
+<div>
+    <h3>Members who enjoy {{interest.interest_name}}:</h3>
+    {{#if interest.users}}
+    {{#each interest.users as |user|}}
+    <div class="row mb-4 userInterest">
+        <div class="col-md-5">
+            <h4>
+                <a class="title" href="/api/users/{{user.id}}"> {{user.first_name}} {{user.last_name}}</a>
+            </h4>
+        </div>
+    </div>
+    {{/each}}
+    {{else}}
+    <p style="font-style: italic;">No member has added this interest yet.</p>
+    {{/if}}
+</div>
+
+<a href="/api/interests">
+    <button>Back to All Interests</button>
+</a>
+
+<script src="/js/heart.js"></script>

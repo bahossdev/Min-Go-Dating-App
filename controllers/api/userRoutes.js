@@ -19,8 +19,8 @@ router.get('/', withAuth, async (req, res) => {
   }
 });
 
-//Get one user
-router.get('/:id', async (req, res) => {
+//Get one user with their added interests and meetups
+router.get('/:id', withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
       attributes: {
@@ -47,9 +47,33 @@ router.get('/:id', async (req, res) => {
     res.render('oneUser', {
       user,
       ...user,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
     });
+    console.log(userData);
     // res.status(200).json(userData);
+  } catch (err) {
+    res.status(500).json(err);
+  };
+});
+
+router.get('/:id/update', withAuth, async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.params.id)
+
+    if (!userData) {
+      res.status(404).json({ message: 'No user found with this id!' });
+      return;
+    };
+    const user = userData.get({ plain: true });
+
+    // res.render('oneUser', {
+    //   user,
+    //   ...user,
+    //   logged_in: req.session.logged_in,
+    // });
+    // console.log(userData);
+    console.log(user);
+    res.status(200).json(user);
   } catch (err) {
     res.status(500).json(err);
   };

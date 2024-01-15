@@ -53,11 +53,8 @@ router.get('/:id', withAuth, async (req, res) => {
 router.post('/', withAuth, async (req, res) => {
     try {
         const meetupData = await Meetup.create(req.body);
-        console.log(meetupData);
         const userId = req.body.users;
-        console.log(userId);
         const meetupId = meetupData.dataValues.id;
-        console.log(meetupId);
 
         req.session.save(() => {
             req.session.user_id = userId;
@@ -66,13 +63,11 @@ router.post('/', withAuth, async (req, res) => {
 
         if (req.body.users.length) {
 
-            const userMeetupArray = {
+            const userMeetupData = {
                 meetup_id: meetupId,
                 user_id: userId
             }
-            console.log('array:' + userMeetupArray);
-
-            await UserMeetup.create(userMeetupArray);
+            await UserMeetup.create(userMeetupData);
         }
 
         res.status(200).json(meetupData);

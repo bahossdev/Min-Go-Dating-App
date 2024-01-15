@@ -1,10 +1,17 @@
+//function to show the form to create a new meetup
 const showMeetupForm = async (event) => {
   event.preventDefault();
-  const meetupForm = document.querySelector('#meetup-form')
-  meetupForm.style.display = (meetupForm.style.display === 'none') ? 'block' : 'none';
-}
+  // Hide the current form if exists
+  if (currentForm) {
+    currentForm.style.display = 'none';
+  }
 
-document.getElementById('new-meetup').addEventListener('click', showMeetupForm);
+  const meetupForm = document.querySelector('#meetup-form');
+  meetupForm.style.display = (meetupForm.style.display === 'none') ? 'block' : 'none';
+
+  // Set the current form reference
+  currentForm = meetupForm;
+};
 
 const createMeetup = async (event) => {
   event.preventDefault();
@@ -36,16 +43,15 @@ const createMeetup = async (event) => {
     }),
     headers: { 'Content-Type': 'application/json' },
   });
+
   if (response.ok) {
     const meetup = await response.json();
     console.log('Meetup successfully created:', response, meetup);
-  document.location.replace('/profile');
-
+    document.location.replace('/profile');
   } else {
     alert(`Failed to create meetup. Status: ${response.status}, Message: ${response.statusText}`)
-  };
+  }
 };
 
-document
-  .querySelector('.meetup-form')
-  .addEventListener('submit', createMeetup);
+document.getElementById('new-meetup').addEventListener('click', showMeetupForm);
+document.querySelector('.meetup-form').addEventListener('submit', createMeetup);
