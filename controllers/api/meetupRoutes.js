@@ -38,6 +38,9 @@ router.get('/:id', withAuth, async (req, res) => {
         };
 
         const meetup = meetupData.get({ plain: true });
+        if (req.session.user_id) {
+            meetup.userJoined = meetup.users.some(user => user.id == req.session.user_id);
+          }
         console.log(meetup);
         res.render('oneMeetup', {
             meetup,
@@ -59,7 +62,7 @@ router.post('/', withAuth, async (req, res) => {
         req.session.save(() => {
             req.session.user_id = userId;
             req.session.logged_in = true;
-          });
+        });
 
         if (req.body.users.length) {
 
@@ -78,7 +81,6 @@ router.post('/', withAuth, async (req, res) => {
 
 // update a meetup
 router.put('/:id', withAuth, async (req, res) => {
-    // update meetup data
     try {
         const meetupData = await Meetup.update(req.body, {
             where: {
@@ -90,11 +92,79 @@ router.put('/:id', withAuth, async (req, res) => {
         if (!meetupData) {
             res.status(400).json({ message: "No meetup found with this information" })
         };
-        res.status(200).json(meetupData)
+       
+    const userId = req.body.users;
+    const meetupId = req.params.id;
+    req.session.save(() => {
+      req.session.user_id = userId;
+      req.session.logged_in = true;
+    });
+
+    if (req.body.users.length) {
+
+      const userMeetupData = {
+        meetup_id: meetupId,
+        user_id: userId
+      }
+      await UserMeetup.create(userMeetupData);
+      console.log(userMeetupData);
+
+      const newUserMeetup = await Meetup.findByPk(req.params.id, {
+        include: [
+          {
+            model: User,
+            through: UserMeetup,
+          },
+        ],
+      });
+      console.log(newUserMeetup);
+
+      if (!newUserMeetup) {
+        res.status(404).json({ message: 'No meetup found with this id!' });
+        return;
+      };
+
+      const meetup = newUserMeetup.get({ plain: true });
+      res.render('oneMeetup', {
+        where: {
+          meetupId: req.params.id
+        },
+        meetup,
+        logged_in: req.session.logged_in
+      })
+    } else {
+      res.status(200).json(meetupData);
+    }
     } catch (err) {
         res.status(500).json(err)
     };
 });
+
+//Remove an meetup from a user
+router.delete('/:id/remove', withAuth, async (req, res) => {
+    try {
+      const meetupId = req.params.id;
+      const userId = req.body.users;
+  
+      req.session.save(() => {
+        req.session.user_id = userId;
+        req.session.logged_in = true;
+      });
+  
+      const userMeetupData = await UserMeetup.destroy({
+        where: {
+          meetup_id: meetupId,
+          user_id: userId
+          // user_id: req.session.user_id,
+        },
+      });
+  
+      res.status(200).json(userMeetupData);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    };
+  });
 
 // delete a meetup
 router.delete('/:id', withAuth, async (req, res) => {

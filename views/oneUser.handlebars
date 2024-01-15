@@ -25,38 +25,40 @@
     </ul>
 </div>
 
-<!-- Display user interests if available -->
-{{#if interests.length}}
-<div class="col-md-6 interest-list">
-    <h3>Interests:</h3>
+<div class="row mt-4" id="list-border">
+    <!-- Display user interests if available -->
+    {{#if interests.length}}
+    <div class="col-md-6 interest-list">
+        <h3>Interests:</h3>
 
-    {{#each interests as |interest|}}
-    <div class="row mb-2">
-        <div class="col-md-8">
-            <!-- Link to the interest -->
-            <h4><a class="list" href="/api/interests/{{interest.id}}">{{interest.interest_name}}</a></h4>
+        {{#each interests as |interest|}}
+        <div class="row mb-2">
+            <div class="col-md-8">
+                <!-- Link to the interest -->
+                <h4><a class="list" href="/api/interests/{{interest.id}}">{{interest.interest_name}}</a></h4>
+            </div>
         </div>
+        {{/each}}
     </div>
-    {{/each}}
-</div>
-{{/if}}
+    {{/if}}
 
 
-<!-- Display user meetups if available -->
-{{#if meetups.length}}
-<div class="col-md-6 meetup-list">
-    <h3>Meetups:</h3>
+    <!-- Display user meetups if available -->
+    {{#if meetups.length}}
+    <div class="col-md-6 meetup-list">
+        <h3>Meetups:</h3>
 
-    {{#each meetups as |meetup|}}
-    <div class="row mb-2">
-        <div class="col-md-8">
-            <!-- Link to the meetup -->
-            <h4><a class="list" href="/api/meetups/{{meetup.id}}">{{meetup.title}}</a></h4>
+        {{#each meetups as |meetup|}}
+        <div class="row mb-2">
+            <div class="col-md-8">
+                <!-- Link to the meetup -->
+                <h4><a class="list" href="/api/meetups/{{meetup.id}}">{{meetup.title}}</a></h4>
+            </div>
         </div>
+        {{/each}}
     </div>
-    {{/each}}
+    {{/if}}
 </div>
-{{/if}}
 
 <a href="/api/users">
     <button>Back to All Users</button>
