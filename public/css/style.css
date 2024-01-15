@@ -130,3 +130,25 @@ border-radius: var(--rounded);
     color: rgb(252, 0, 0);; 
 }
 
+/*homepage cards container*/
+#cards-container {
+    position: absolute;
+    top: 12%; /* Adjust the top position to place it in the top 1/3rd */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between; /* Adjust this to control the space between cards */
+    width: 80%;
+}
+
+/*homepage card*/
+
+#homepage-card.card {
+    width: 30%; /* Adjust the width of each card as needed */
+    background-color: rgba(102, 162, 187, 0.5);
+    height: 200px;
+    padding: 20px;
+    margin: 10px; /* Adjust the margin to control space between cards */
+    border: none;
+    box-shadow: 0 10px 400px rgba(0, 0, 0, 0.2);
+}

@@ -1,71 +1,87 @@
 <head>
-<style>
-    .welcome-message {
-      text-align: center;
-      margin-bottom: 20px;
-    }
+    <style>
+        .welcome-message {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-    .home-pix {
-      display: flex;
-      justify-content: space-between; /* Adjust this based on your needs */
-    }
+        .home-pix {
+            display: flex;
+            justify-content: space-between;
+            /* Adjust this based on your needs */
+        }
 
-    .card {
-      width: 30%; /* Adjust the width as needed */
-      text-align: center;
-      border: 1px solid #ddd; /* Optional: Add a border for visual separation */
-      padding: 10px;
-    }
-  </style>
+        .card {
+            width: 30%;
+            /* Adjust the width as needed */
+            text-align: center;
+            border: 1px solid #ddd;
+            /* Optional: Add a border for visual separation */
+            padding: 10px;
+        }
+    </style>
 
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-    }
-    body {
-      background-image: url("/images/holdinghands.jpg");
-      background-size: cover; /* Adjust this based on your needs */
-      background-position: center; /* Adjust this based on your needs */
-      background-attachment: fixed; /* Keeps the background fixed when scrolling */
-    }
-  </style>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            background-image: url("/images/holdinghands.jpg");
+            background-size: cover;
+            /* Adjust this based on your needs */
+            background-position: center;
+            /* Adjust this based on your needs */
+            background-attachment: fixed;
+            /* Keeps the background fixed when scrolling */
+        }
+    </style>
 </head>
-<body>
-</head>
 
 <body>
-    
-<div class="welcome-message">
-    <h1>Welcome to Min-Go Dating App</h1>
-    <p></p>
-    {{#unless logged_in}}
-    <!-- Button linking to the login page -->
-    <a href="/signup"><button class="btn btn-primary cta-button" type="submit">Create an Account</button></a>
-    {{/unless}}
-</div>
+   
 
-<section class="container home-pix">
-        <section class="card">
-        <a href="/api/users">
-            <header>Users</header>
-            {{!-- add image form the public/images folder --}}
-            {{!-- <img src="/images/people3.jpg" class="thumbnail">
-        </a> --}}
-    </section>
-        <section class="card">
-        <a href="/api/meetups">
-            <header>Meetups</header>
-            {{!-- add image form the public/images folder --}}
-            {{!-- <img src="/images/meetup.jpg" class="thumbnail"> --}}
-        </a>
-    </section>
-    <section class="card">
-        <a href="/api/interests">
-            <header>Interests</header>
-            {{!-- add image form the public/images folder --}}
-            {{!-- <img src="/images/hobbies.png" class="thumbnail"> --}}
-        </a>
-    </section>
-</section>
+
+
+    <div class="welcome-message">
+        <h1>Welcome to Min-Go Dating App</h1>
+        <p></p>
+        {{#unless logged_in}}
+        <!-- Button linking to the login page -->
+        <a href="/signup"><button class="btn btn-primary cta-button" type="submit">Create an Account</button></a>
+        {{/unless}}
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div>
+
+        <section class="container home-pix" id="cards-container">
+            <section class="card content" id="homepage-card">
+                <a href="/api/users">
+                    <header>Users</header>
+                    {{!-- add image form the public/images folder --}}
+                    {{!-- <img src="/images/people3.jpg" class="thumbnail">
+                </a> --}}
+            </section>
+            <section class="card content" id="homepage-card">
+                <a href="/api/meetups">
+                    <header>Meetups</header>
+                    {{!-- add image form the public/images folder --}}
+                    {{!-- <img src="/images/meetup.jpg" class="thumbnail"> --}}
+                </a>
+            </section>
+            <section class="card content" id="homepage-card">
+                <a href="/api/interests">
+                    <header>Interests</header>
+                    {{!-- add image form the public/images folder --}}
+                    {{!-- <img src="/images/hobbies.png" class="thumbnail"> --}}
+                </a>
+            </section>
+        </section>
+    </div>
 </body>
