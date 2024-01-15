@@ -1,15 +1,82 @@
 [
-    { "interest_name": "yoga" },
-    { "interest_name": "fishing" },
-    { "interest_name": "coffee date" },
-    { "interest_name": "karaoke" },
-    { "interest_name": "picnic" },
-    { "interest_name": "movies" },
-    { "interest_name": "pickleball" },
-    { "interest_name": "tennis" },
-    { "interest_name": "hiking" },
-    { "interest_name": "rock climbing" },
-    { "interest_name": "museum" },
-    { "interest_name": "outdoor" }
-  ]
-  
+  {
+    "interest_name": "Art",
+    "photo": "/upload/interests/art.jpg"
+  },
+  {
+    "interest_name": "Camping",
+    "photo": "/upload/interests/camping.jpg"
+  },
+  {
+    "interest_name": "Coffee Date",
+    "photo": "/upload/interests/coffee-date.jpg"
+  },
+  {
+    "interest_name": "Concert and Live Music",
+    "photo": "/upload/interests/concert.jpg"
+  },
+  {
+    "interest_name": "Cooking",
+    "photo": "/upload/interests/cooking.jpg"
+  },
+  {
+    "interest_name": "Crafting",
+    "photo": "/upload/interests/crafting.jpg"
+  },
+  {
+    "interest_name": "Eating Out",
+    "photo": "/upload/interests/peopleEating.jpg"
+  },
+  {
+    "interest_name": "Fishing",
+    "photo": "/upload/interests/fishing.jpg"
+  },
+  {
+    "interest_name": "Foods",
+    "photo": "/upload/interests/foods.jpg"
+  },
+  {
+    "interest_name": "Hiking",
+    "photo": "/upload/interests/hiking.jpg"
+  },
+  {
+    "interest_name": "Karaoke",
+    "photo": "/upload/interests/karaoke.jpg"
+  },
+  {
+    "interest_name": "Meditation",
+    "photo": "/upload/interests/meditation.jpg"
+  },
+  {
+    "interest_name": "Movies",
+    "photo": "/upload/interests/movies.jpg"
+  },
+  {
+    "interest_name": "Museum",
+    "photo": "/upload/interests/museum.jpg"
+  },
+  {
+    "interest_name": "Music",
+    "photo": "/upload/interests/music.jpg"
+  },
+  {
+    "interest_name": "Pickleball",
+    "photo": "/upload/interests/pickelball.jpg"
+  },
+  {
+    "interest_name": "Picnic",
+    "photo": "/upload/interests/picnic.jpg"
+  },
+  {
+    "interest_name": "Rock Climbing",
+    "photo": "/upload/interests/rock.jpg"
+  },
+  {
+    "interest_name": "Tennis",
+    "photo": "/upload/interests/tennis.jpg"
+  },
+  {
+    "interest_name": "Yoga",
+    "photo": "/upload/interests/yoga.jpg"
+  }
+]

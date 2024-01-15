@@ -1,13 +1,26 @@
-{{#each interests as |interest|}}
-<div class="row mb-4 interest">
-    <div class="col-md-5">
-        <h2>
-            <a class="title" href="/api/interests/{{interest.id}}"> {{interest.interest_name}}</a>
-        </h2>
+<h2>Interests and Hobbies:</h2>
+<div class="row">
+    {{#each interests as |interest|}}
+    <div class="col-md-4 mb-4 interest">
+        <section class="card">
+            <a class="title" href="/api/interests/{{interest.id}}">
+                {{#if interest.photo }}
+                <img src="{{interest.photo}}" class="thumbnail">
+                {{else}}
+                <img src="/upload/interests/no-photo.jpg" class="thumbnail">
+                {{/if}}
+                <h3 class="text-center">{{interest.interest_name}}</h3>
+            </a>
+            <button class="heart-button" data-interest-id="{{interest.id}}" onclick="toggleInterest(this)">
+                &#x2665;
+            </button>
+        </section>
     </div>
+    {{/each}}
 </div>
-{{/each}}
 
 <a href="/">
     <button>Back to HomePage</button>
 </a>
+
+<script src="/js/heart.js"></script>
