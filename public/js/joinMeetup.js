@@ -4,14 +4,15 @@ const userId = document.cookie
   .find(row => row.startsWith('user_id='))
   .split('=')[1];
 
-// function to add or remove interest from the user
-const toggleHeart = async (event) => {
+// function to add or remove meetup from the user
+const toggleJoin = async (event) => {
   event.preventDefault();
   const button = event.target;
 
-  // Get the interest id from the clicked button
-  const interestId = button.getAttribute('data-interest-id');
+  // Get the meetup id from the clicked button
+  const meetupId = button.getAttribute('data-meetup-id');
   const isActive = button.classList.contains('active');
+  console.log(meetupId);
 
   // Determine the action based on the current state
   const action = isActive ? 'remove' : 'add';
@@ -20,9 +21,9 @@ const toggleHeart = async (event) => {
     let url;
     
     if (action === 'remove') {
-      url = `/api/interests/${interestId}/remove`;
+      url = `/api/meetups/${meetupId}/remove`;
     } else {
-      url = `/api/interests/${interestId}`;
+      url = `/api/meetups/${meetupId}`;
     }
 
     const response = await fetch(url, {
@@ -35,16 +36,16 @@ const toggleHeart = async (event) => {
       throw new Error(`Error: ${response.status} - ${response.statusText}`);
     }
     if (response.ok) {
-      document.location.replace(`/api/interests/${interestId}`);
+      document.location.replace(`/api/meetups/${meetupId}`);
       console.log(action);
   } else {
       alert(response.statusText);
   }
  
   } catch (error) {
-    console.error('Toggle Heart Error:', error);
+    console.error('Toggle Join Error:', error);
     alert('There was an error processing your request.');
   }
 };
 
-document.querySelector('.heart-button').addEventListener('click', toggleHeart);
+document.querySelector('.join').addEventListener('click', toggleJoin);

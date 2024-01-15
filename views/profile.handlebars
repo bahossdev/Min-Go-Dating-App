@@ -32,6 +32,7 @@
     <button type="submit" class="btn btn-primary" id="new-meetup">Create New Meetup</button>
 </div>
 
+{{!-- Display user's meetups and interests --}}
 <div class="row mt-4" id="list-border">
     <!-- Display user interests if available -->
     {{#if interests.length}}
@@ -44,9 +45,10 @@
                 <!-- Link to the interest -->
                 <h4><a class="list" href="/api/interests/{{interest.id}}">{{interest.interest_name}}</a></h4>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 remove-interest">
                 <!-- Buttons for removing an interest -->
-                <button class="btn btn-sm btn-danger" remove="{{interest.id}}">Remove</button>
+                <button class="btn btn-sm btn-danger" data-interest-id="{{interest.id}}"
+                    id="remove-interest">Remove</button>
             </div>
         </div>
         {{/each}}
@@ -65,9 +67,9 @@
                 <h4><a class="list" href="/api/meetups/{{meetup.id}}">{{meetup.title}}</a></h4>
             </div>
             <div class="col-md-4">
-                <!-- Buttons for updating and deleting a meetup -->
-                <button class="btn btn-sm" update="{{meetup.id}}">Update</button>
-                <button class="btn btn-sm btn-danger" delete="{{meetup.id}}">Delete</button>
+                <!-- Buttons for removing a meetup -->
+                <button class="btn btn-sm btn-danger" data-meetup-id="{{meetup.id}}"
+                    id="unattend-meetup">Unjoin</button>
             </div>
         </div>
         {{/each}}
@@ -77,8 +79,8 @@
 
 {{!-- list for showing the user's own events --}}
 {{!-- TODO --}}
+<!-- Form for updating user info -->
 <div class="col-md-6">
-    <!-- Form for updating user info -->
     <form class="form update-user-form" id="update-form" style="display: none;">
 
         {{!-- first-name --}}
@@ -156,8 +158,8 @@
 
 </div>
 
+<!-- Form for adding new Meetup -->
 <div>
-    <!-- Form for adding or editing new Meetup -->
     <form class="form meetup-form" id="meetup-form" style="display: none;">
         {{!-- meetup title --}}
         <div class="form-group">
@@ -196,10 +198,10 @@
         <div class="form-group">
             <button type="submit" class="btn btn-primary" id="submit-meetup">Submit</button>
         </div>
-    </form>   
+    </form>
     <br>
     <a href="/">
-        <button class="btn btn-primary-homepage" >Back to HomePage</button>
+        <button class="btn btn-primary-homepage">Back to HomePage</button>
     </a>
 </div>
 <!-- Include JavaScript for dashboard functionality -->
