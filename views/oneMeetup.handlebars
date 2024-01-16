@@ -1,16 +1,33 @@
-<h2>
-    {{meetup.title}}
-</h2>
-<h3>Description:</h3>
+<h1 id="list-border-meetup" >
+   <strong>{{meetup.title}}</strong> 
+</h1>
+<br>
+<h2>Description:</h2>
 <p>{{meetup.description}}</p>
-<h3>Date and Time:</h3>
+<h2>Date and Time:</h2>
 <p>{{format_date meetup.date}} at {{meetup.time}}</p>
+{{!-- {{#if meetup.owner_id}}
+<p class="owner">Created by
+    {{meetup.users.first_name}} --}}
+    {{!-- on {{format_date meetup.date_created}}</p> --}}
+{{!-- {{/if}} --}}
+
+{{#if meetup.userJoined}}
+<p>You have joined to this meetup. Have fun! 🤩
+    <button type="submit" class="btn btn-danger join
+    active" id="join" data-meetup-id="{{meetup.id}}">Unattend</button>
+</p>
+{{else}}
+<p>Would you like to go?
+    <button type="submit" class="btn btn-primary join inactive" id="join" data-meetup-id="{{meetup.id}}">Attend</button>
+</p>
+{{/if}}
 
 <h3>Members who are going to this meetup:</h3>
 {{#each meetup.users as |user|}}
 <div class="row mb-4 userMeetup">
     <div class="col-md-5">
-        <h4>
+        <h4 id="list-border-meetup">
             <a class="title" href="/api/users/{{user.id}}"> {{user.first_name}} {{user.last_name}}</a>
         </h4>
     </div>
@@ -18,5 +35,8 @@
 {{/each}}
 
  <a href="/api/meetups">
- <button>Back to All Meetups</button>
+ <button class="btn btn-primary-homepage">Back to All Meetups</button>
  </a>
+
+<link rel="stylesheet" href="Project 2/Min-Go-Dating-App/public/css/style.css">
+<script src="/js/joinMeetup.js"></script>

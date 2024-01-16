@@ -5,9 +5,10 @@
     {{#if interest.photo }}
     <section class="card">
         <img src="{{interest.photo}}" class="thumbnail">
-        <button class="heart-button" id="heart-button" data-interest-id="{{interest.id}}" class="inactive">
+        <button class="heart-button {{#if interest.userHasInterest}}active{{else}}inactive{{/if}}" id="heart-button"
+            data-interest-id="{{interest.id}}">
             &#x2665;
-        </button> 
+        </button>
     </section>
     {{else}}
     <section class="card">
@@ -35,7 +36,7 @@
 </div>
 
 <a href="/api/interests">
-    <button>Back to All Interests</button>
+    <button class="btn btn-primary-homepage">Back to All Interests</button>
 </a>
 
 <script src="/js/heart.js"></script>

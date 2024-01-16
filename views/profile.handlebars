@@ -15,14 +15,15 @@
     </section>
     {{/if}}
 </div>
+<br>
 <ul>
-    <li>First Name: {{first_name}}</li>
-    <li>Last Name: {{last_name}}</li>
-    <li>Age: {{age}}</li>
-    <li>Gender: {{gender}}</li>
-    <li>Location: {{location}}</li>
-    <li>Status: {{status}}</li>
-    <li>Education: {{education}}</li>
+    <li><strong>First Name</strong>: {{first_name}}</li>
+    <li><strong>Last Name</strong>: {{last_name}}</li>
+    <li><strong>Age</strong>: {{age}}</li>
+    <li><strong>Gender</strong>: {{gender}}</li>
+    <li><strong>Location</strong>: {{location}}</li>
+    <li><strong>Status</strong>: {{status}}</li>
+    <li><strong>Education</strong>: {{education}}</li>
 </ul>
 
 <div class="form-group-update">
@@ -31,7 +32,8 @@
     <button type="submit" class="btn btn-primary" id="new-meetup">Create New Meetup</button>
 </div>
 
-<div class="row mt-4">
+{{!-- Display user's meetups and interests --}}
+<div class="row mt-4" id="list-border">
     <!-- Display user interests if available -->
     {{#if interests.length}}
     <div class="col-md-6 interest-list">
@@ -43,9 +45,10 @@
                 <!-- Link to the interest -->
                 <h4><a class="list" href="/api/interests/{{interest.id}}">{{interest.interest_name}}</a></h4>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 remove-interest">
                 <!-- Buttons for removing an interest -->
-                <button class="btn btn-sm btn-danger" remove="{{interest.id}}">Remove</button>
+                <button class="btn btn-sm btn-danger" data-interest-id="{{interest.id}}"
+                    id="remove-interest">Remove</button>
             </div>
         </div>
         {{/each}}
@@ -64,9 +67,9 @@
                 <h4><a class="list" href="/api/meetups/{{meetup.id}}">{{meetup.title}}</a></h4>
             </div>
             <div class="col-md-4">
-                <!-- Buttons for updating and deleting a meetup -->
-                <button class="btn btn-sm" update="{{meetup.id}}">Update</button>
-                <button class="btn btn-sm btn-danger" delete="{{meetup.id}}">Delete</button>
+                <!-- Buttons for removing a meetup -->
+                <button class="btn btn-sm btn-danger" data-meetup-id="{{meetup.id}}"
+                    id="unattend-meetup">Unjoin</button>
             </div>
         </div>
         {{/each}}
@@ -76,13 +79,13 @@
 
 {{!-- list for showing the user's own events --}}
 {{!-- TODO --}}
+<!-- Form for updating user info -->
 <div class="col-md-6">
-    <!-- Form for updating user info -->
     <form class="form update-user-form" id="update-form" style="display: none;">
 
         {{!-- first-name --}}
         <div class="form-group">
-            <label for="first-name">First Name:</label>
+            <label for="first-name">* First Name:</label>
             <input class="form-input" type="text" id="first-name" name="first-name" required />
         </div>
         {{!-- last-name --}}
@@ -92,13 +95,14 @@
         </div>
         {{!-- Age --}}
         <div class="form-group">
-            <label for="age">Age:</label>
+            <label for="age">* Age:</label>
             <input class="form-input" type="text" id="age" name="age" required />
         </div>
         {{!-- Gender --}}
         <div class="form-group">
-            <label for="gender">Gender:</label>
+            <label for="gender">* Gender:</label>
             <select class="form-input" id="gender" name="gender" required>
+                <option value="">Gender</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
                 <option value="Other">Other</option>
@@ -106,13 +110,14 @@
         </div>
         {{!-- Location --}}
         <div class="form-group">
-            <label for="location">Location: </label>
+            <label for="location">* Location: </label>
             <input class="form-input" type="text" id="location" name="location" required />
         </div>
         <!-- Status -->
         <div class="form-group">
             <label for="status">Status: (optional)</label>
             <select class="form-input" id="status" name="status">
+                <option value="">Status</option>
                 <option value="Single">Single</option>
                 <option value="Married">Married</option>
                 <option value="Divorced/widowed">Divorced/Widowed</option>
@@ -122,6 +127,7 @@
         <div class="form-group">
             <label for="education">Education: (optional)</label>
             <select class="form-input" id="education" name="education">
+                <option value="">Education</option>
                 <option value="High-school">High School</option>
                 <option value="College">College</option>
                 <option value="Bachelors">Bachelor's Degree</option>
@@ -152,8 +158,8 @@
 
 </div>
 
+<!-- Form for adding new Meetup -->
 <div>
-    <!-- Form for adding or editing new Meetup -->
     <form class="form meetup-form" id="meetup-form" style="display: none;">
         {{!-- meetup title --}}
         <div class="form-group">
@@ -193,10 +199,9 @@
             <button type="submit" class="btn btn-primary" id="submit-meetup">Submit</button>
         </div>
     </form>
-
-
+    <br>
     <a href="/">
-        <button>Back to HomePage</button>
+        <button class="btn btn-primary-homepage">Back to HomePage</button>
     </a>
 </div>
 <!-- Include JavaScript for dashboard functionality -->

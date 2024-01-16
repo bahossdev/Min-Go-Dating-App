@@ -5,11 +5,13 @@
             <a class="title" href="/api/meetups/{{meetup.id}}"> {{meetup.title}}</a>
         </h2>
         <!-- Display the author and creation date of the meetup -->
-        {{!-- <p class="owner">Created by {{meetup.user.name}} on {{format_date meetup.date_created}}</p> --}}
+        {{!-- {{#if meetup.owner_id}}
+        <p class="owner">Created by {{meetup.user}} on {{format_date meetup.date_created}}</p>
+        {{/if}} --}}
     </div>
 </div>
 {{/each}}
 
 <a href="/">
-    <button>Back to HomePage</button>
+<button class="btn btn-primary-homepage" >Back to HomePage</button>
 </a>
