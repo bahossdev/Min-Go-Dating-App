@@ -78,7 +78,7 @@ router.get('/:id', withAuth, async (req, res) => {
   };
 });
 
-// //Create new interest with/out image
+// Create new interest with/out image
 router.post('/', withAuth, async (req, res) => {
   try {
     upload(req, res, async (err) => {

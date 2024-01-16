@@ -12,8 +12,6 @@ const toggleHeart = async (event) => {
   // Get the interest id from the clicked button
   const interestId = button.getAttribute('data-interest-id');
   const isActive = button.classList.contains('active');
-
-  // Determine the action based on the current state
   const action = isActive ? 'remove' : 'add';
   
   try {

@@ -1,0 +1,19 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("/images/holdinghands.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.card {
+    min-width: 300px;
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 10px;
+}

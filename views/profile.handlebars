@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-auto">
         <!-- Greet the user by name -->
-        <h2>Hi, {{first_name}}! 👋🏼 </h2>
+        <h2 class="page-title">Hi, {{first_name}}! 👋🏼 </h2>
     </div>
 </div>
 <div>
@@ -77,8 +77,6 @@
     {{/if}}
 </div>
 
-{{!-- list for showing the user's own events --}}
-{{!-- TODO --}}
 <!-- Form for updating user info -->
 <div class="col-md-6">
     <form class="form update-user-form" id="update-form" style="display: none;">
@@ -150,7 +148,7 @@
                 <input name="myImage" type="file">
             </div>
             <div class="file-path-wrapper">
-                <input class="file-path validate" type="text">
+                {{!-- <input class="file-path validate" type="text"> --}}
             </div>
         </div>
         <button type="submit" class="btn">Submit</button>

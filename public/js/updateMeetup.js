@@ -12,7 +12,6 @@ const showUpdateMeetupForm = async (event) => {
   currentForm = updateMeetupForm;
 };
 
-
 const updateMeetupHandler = async (event) => {
   event.preventDefault();
 
@@ -22,8 +21,6 @@ const updateMeetupHandler = async (event) => {
   const updatedTime = document.querySelector('#update-time').value;
   const updatedLocation = document.querySelector('#update-meet-location').value.trim();
   const updatedInPerson = document.querySelector('#update-in_person').value;
-
-  // const meetupId = /* Get the ID of the meetup you want to update */;
 
   const response = await fetch(`/api/meetups/${meetupId}`, {
     method: 'PUT',

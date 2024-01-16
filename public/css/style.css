@@ -1,3 +1,6 @@
+* {
+    box-sizing: border-box;
+}
  /* THEMATIC STYLING ELEMENTS */
  :root {
      --blue: #66a2bb;
@@ -17,79 +20,20 @@
      padding: 0 !important;
      border-radius: var(--rounded);
      box-shadow: none !important;
-
+     background-color: transparent !important;
  }
 
-#logo.image {
-    width: 300px;
-}
-
-
-.topnav {
-    display: inline-block;
-align-items: right;
-
-/* Takes border off logo box    */
-#logo.box {
-    border: none !important;
-    padding: 0 !important;
-    border-radius: var(--rounded);
-
-}
-
-.navbar-start {
-    margin-left: auto;
-  }
-
-
-/*nav bar */
-.navbar {
-    position: fixed;
-    background-color: rgba(255, 255, 255, 0.0);
-    
-
-}
-
-.navbar-item {
-    display: inline-flex;
-    align-items: center;
-    padding: 0 10px;
-}
-
-@media screen and (max-width: 768px) {
-    .navbar-menu {
-        background-color: white; /* Or any other color */
-    }
-}
-
- /* #logo {
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
-} */
-
-/* 
- .navbar-start {
-     margin-left: auto;
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
+ #logo.image {
+     width: 300px;
  }
 
- .topnav {
-     padding: 0 10px;
-
- }
-
-
+ /*nav bar */
  .navbar {
      position: fixed;
-     background-color: rgba(255, 255, 255, 0.0);
-     width: calc(100% - 276px);
-     margin-left: 276px;
-     padding-top: 20px;
+     top: 10px;
+     right: 20px;
+     background-color: transparent;
  }
-
 
  .navbar-item {
      display: inline-flex;
@@ -97,70 +41,73 @@ align-items: right;
      padding: 0 10px;
  }
 
- .navbar-start .navbar-item:first-child {
-    padding-right: 0;
-}  */
+ @media screen and (max-width: 600px) {
+     .navbar {
+         position: fixed;
+         top: 60px;
+         background-color: transparent;
+     }
 
- /* .logo-wrapper {
-     display: flex;
-     align-items: center;
-     margin-right: 1rem;
+     .navbar-item {
+         display: inline-flex;
+         align-items: center;
+         padding: 3px;
+         font-size: 13px;
+     }
  }
 
- .logo-wrapper img {
-     width: 48px;
-     height: 48px;
-     display: flex;
-     align-items: center;
+ .no-button {
+     background: none;
+     border: none;
+     padding: 0, 10px;
+     cursor: pointer;
+     color: #1b89bc;
+     font-size: 100%;
  }
 
-
-
+ .no-button:hover {
+     color: #065b83;
+     text-decoration: underline;
+ }
 
  #logo img {
      border-radius: var(--rounded) !important;
      background-color: transparent !important;
      width: 800px;
      height: auto;
-
  }
-*/
+
  #logo.box {
      border: none !important;
      padding: 0 !important;
      border-radius: var(--rounded);
      background-color: transparent !important;
- } 
+ }
 
  .home-pix {
      display: flex;
      flex-direction: row;
+     justify-content: space-between;
+
  }
 
  .thumbnail {
      width: 320px;
      height: 200px;
-     /* margin: 20px; */
      object-fit: cover;
      border-radius: var(--rounded);
-     /*border-radius: 15px;*/
-
  }
 
  .card {
      background-color: transparent;
      position: relative;
      display: inline-block;
-
      margin: 10px;
-
      border-radius: 25px;
      background-color: rgba(255, 255, 255, 0.2);
      padding: 20px;
-     /* width: 200px;
-  height: 150px; */
-
-
+     text-align: center;
+     border: 1px solid #ddd;
  }
 
  .card header {
@@ -173,33 +120,12 @@ align-items: right;
      text-align: center;
      z-index: 1;
      padding: 10px;
-     /* background-color: rgba(0, 0, 0, 0.5); */
  }
-
-
- /* kunals css update from homepage */
 
  .welcome-message {
      text-align: center;
      margin-bottom: 20px;
  }
-
- .home-pix {
-     display: flex;
-     justify-content: space-between;
-     /* Adjust this based on your needs */
- }
-
- .card {
-     /* width: 30%; Adjust the width as needed */
-     text-align: center;
-     border: 1px solid #ddd;
-     /* Optional: Add a border for visual separation */
-     padding: 10px;
- }
-
-
-
 
  .heart-button {
      position: absolute;
@@ -225,158 +151,49 @@ align-items: right;
 
  /*homepage cards container*/
  #cards-container {
-     position: absolute;
-     top: 12%;
-     /* Adjust the top position to place it in the top 1/3rd */
-     left: 50%;
-     transform: translateX(-50%);
+     margin: auto;
      display: flex;
+     flex-wrap: wrap;
      justify-content: space-between;
-     /* Adjust this to control the space between cards */
-     width: 80%;
  }
 
  /*homepage card*/
-
  #homepage-card.card {
-     width: 30%;
-     /* Adjust the width of each card as needed */
      background-color: rgba(102, 162, 187, 0.5);
      height: 200px;
      padding: 20px;
-     margin: 10px;
-     /* Adjust the margin to control space between cards */
      border: none;
      box-shadow: 0 10px 400px rgba(0, 0, 0, 0.2);
  }
 
-    flex-direction: row;
-}
-
-.thumbnail {
-    width: 320px;
-    height: 200px;
-    /* margin: 20px; */
-    object-fit: cover;
-    border-radius: 25px;
-    /*border-radius: 15px;*/
-
-}
-
-.card {
-    background-color: transparent;
-    position: relative;
-    display: inline-block;
-
-    margin: auto;
-
-    border-radius: 25px;
-    background-color: rgba(255, 255, 255, 0.2);
-  padding: 20px;
-  /* width: 200px;
-  height: 150px; */
+ #homepage-card.card:hover {
+     background-color: rgba(90, 121, 134, 0.49);
+ }
 
 
-}
+ /* for interest and meetup list */
+ #list-border {
+     border: 1px solid #ddd;
+     padding: 13px;
+     margin: auto;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+     border-radius: 25px;
+ }
 
-.card header {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: black;
-    font-size: 2.5em;
-    text-align: center;
-    z-index: 1;
-    padding: 10px;
-    /* background-color: rgba(0, 0, 0, 0.5); */
-}
+ #list-border-meetup {
+     font-size: 18px;
+     border: none;
+     box-shadow: none;
+ }
 
+ .list {
+     font-size: 20px;
+     font-weight: bold;
+ }
 
-/* kunals css update from homepage */
-
-.welcome-message {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  .home-pix {
-    display: flex;
-    justify-content: space-between; /* Adjust this based on your needs */
-  }
-
-  .card {
-    /* width: 30%; Adjust the width as needed */
-    text-align: center;
-    border: 1px solid #ddd; /* Optional: Add a border for visual separation */
-    padding: 10px;
-  }
-
-  
-  
-
-.heart-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 90px; 
-    color: rgba(227, 82, 82, 0.539);
-    cursor: pointer;
-    border: none;
-    background: none;
-    padding: 0;
-}
-
-.heart-button:hover {
-    color: rgb(252, 0, 0); 
-    text-shadow: 4px 4px 6px rgb(255, 198, 198);
-}
-
-.heart-button.active {
-    color: rgb(252, 0, 0);; 
-}
-
-
-/* kunals updates for interest and meetup list */
-#list-border {
-    border: 1px solid #ddd; /* Optional: Add a border for visual separation */
-    padding: 13px;
-    margin: auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 25px;
-}
-#list-border h3 {
-    text-decoration: underline; /* Add underline to the h3 element inside #list-border */
-}
- */
-
-/*homepage cards container*/
-#cards-container {
-    position: absolute;
-    top: 12%; /* Adjust the top position to place it in the top 1/3rd */
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    justify-content: space-between; /* Adjust this to control the space between cards */
-    width: 80%;
-}
-
-/*homepage card*/
-
-#homepage-card.card {
-    width: 30%; /* Adjust the width of each card as needed */
-    background-color: rgba(102, 162, 187, 0.5);
-    height: 200px;
-    padding: 20px;
-    margin: 10px; /* Adjust the margin to control space between cards */
-    border: none;
-    box-shadow: 0 10px 400px rgba(0, 0, 0, 0.2);
-
-}
-
-#list-border-meetup a.title {
-    font-size: 18px;
-    border: none;
-    box-shadow: none;
-}
-
+ .page-title {
+     font-size: 36px;
+     font-weight: bold;
+     margin-bottom: 30px;
+     color: #065b83;
+ }

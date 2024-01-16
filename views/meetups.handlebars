@@ -1,13 +1,11 @@
+<h2 class="page-title">Meetups:</h2>
+
 {{#each meetups as |meetup|}}
 <div class="row mb-4 meetup">
     <div class="col-md-5">
-        <h2>
-            <a class="title" href="/api/meetups/{{meetup.id}}"> {{meetup.title}}</a>
-        </h2>
-        <!-- Display the author and creation date of the meetup -->
-        {{!-- {{#if meetup.owner_id}}
-        <p class="owner">Created by {{meetup.user}} on {{format_date meetup.date_created}}</p>
-        {{/if}} --}}
+        <h4 class="list">
+            <a href="/api/meetups/{{meetup.id}}"> {{meetup.title}}</a>
+        </h4>
     </div>
 </div>
 {{/each}}
