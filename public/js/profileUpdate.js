@@ -100,6 +100,7 @@ const removeInterest = async (event) => {
 // to remove a meetup
 const unattendMeetup = async (event) => {
   event.preventDefault();
+  console.log('clicked')
   const button = event.target;
   const meetupId = button.getAttribute('data-meetup-id');
 
@@ -125,6 +126,6 @@ document.querySelectorAll('.remove-interest').forEach(button => {
   button.addEventListener('click', removeInterest);
 });
 
-document.querySelectorAll('.unattend-meetup').forEach(button => {
+document.querySelectorAll('#unattend-meetup').forEach(button => {
   button.addEventListener('click', unattendMeetup);
 });
