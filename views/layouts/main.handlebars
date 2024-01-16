@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,148 +8,51 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/style.css">
-{{!-- KUNALS UPDATE FOR STYLING THE BACKGROUND IMAGE, MAYBE ADD TO CSS FILE? MOVED THIS TO THE HOMEPAGE VIEW,  --}}
+  {{!-- KUNALS UPDATE FOR STYLING THE BACKGROUND IMAGE, MAYBE ADD TO CSS FILE? MOVED THIS TO THE HOMEPAGE VIEW, --}}
 
-{{!-- <style>
-    html, body {
+  {{!-- <style>
+    html,
+    body {
       height: 100%;
       margin: 0;
     }
+
     body {
       background-image: url("/images/holdinghands.jpg");
-      background-size: cover; /* Adjust this based on your needs */
-      background-position: center; /* Adjust this based on your needs */
-      background-attachment: fixed; /* Keeps the background fixed when scrolling */
+      background-size: cover;
+      /* Adjust this based on your needs */
+      background-position: center;
+      /* Adjust this based on your needs */
+      background-attachment: fixed;
+      /* Keeps the background fixed when scrolling */
     }
-  </style>
-</head> --}}
+  </style>--}}
+</head> 
+
 <body>
+  <header>
+    {{!-- logo --}}
+    <a class="active" href="/">
+      <figure class="image is-rounded box" id="logo">
+        <img src="/images/logos/transLogosmall.png" alt="Your Logo">
+    </a>
 
-<div class="container is-relative">
-  <!-- Navbar -->
-  <nav class="navbar is-absolute is-top" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <!-- Navbar content... -->
-    </div>
-    <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-start">
-        <!-- Home links... -->
-        <div class="columns is-vcentered">
-          <!-- Image Column -->
-          <div class="column">
-            {{!-- <figure class="image is-256x256 is-rounded box" id="logo">
-            </figure> --}}
-          </div>
-          <!-- Navbar items -->
-          {{!-- <div class="column is-four-fifths">
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">Menu</a>
-              <div class="navbar-dropdown">
-                <a class="navbar-item" href="/">Home</a>
-                <a class="navbar-item">Interests</a>
-                <!-- Meetup Link -->
-                 <a class="navbar-item">Meetup</a>
-                <!-- Profile Link -->
-                       <a class="navbar-item">Profile</a>
-              </div>
+    {{!-- nav --}}
+    <nav>
+     <div class="topnav">
+              {{!-- homepage link is not working --}}
+              {{!-- <a class="active" href="/">Home</a> --}}
+              <a class="navbar-item" href="/api/interests">Interests</a>
+              <a class="navbar-item" href="/api/meetups">Meetups</a>
+              <a class="navbar-item" href="/api/users/">Members</a>
             </div>
-          </div>
-        </div>
-      </div> --}}
-
-      <div class="topnav">
-        {{!-- homepage link is not working --}}
-  <a class="active" href="/">Home</a>
-  <a class="navbar-item" href="/api/interests">Interests</a>
-  <a class="navbar-item" href="/api/meetups">Meetups</a>
-  <a class="navbar-item" href="/profile">Profile</a>
-</div>
-      
-      {{!-- removed the profile and login buttons --}}
-      {{!-- <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            <a class="button is-info is-focused">
-              <strong>Sign up</strong>
-            </a>
-            <a class="button is-light">
-              Log in
-            </a>
-          </div> --}}
-        </div>
-      </div>
-    </div>
-  </nav>
-</div>
-
-
-  
-  {{!-- <div class="container is-relative">
-    <!-- Navbar -->
-    <nav class="navbar is-absolute is-top" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <!-- Navbar content... -->
-      </div>
-      <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
-          <!-- Home links... -->
-          <a class="navbar-item" class="page-title" href="/">
-            Home
-          </a>
-          <a class="navbar-item">
-            Interests
-          </a>
-          <!-- Meetup Link -->
-          <!-- Profile Link -->
-        </div>
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-              <a class="button is-info is-focused">
-                <strong>Sign up</strong>
-              </a>
-              <a class="button is-light">
-                Log in
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
     </nav>
-    </div>
 
-    <!-- Image Column -->
-    <div class="column is-one-fifth">
-      <figure class="image is-256x256 is-rounded box" id="logo">
-        <img src="/images/logos/bigLogo.jpeg" alt="Your Logo">
-      </figure>
-    </div>
-  </div> --}}
 
-  {{!-- <section class="hero is-large">
-    <image holdinghands class="background-image" source src="/images/holdinghands.jpg"></image>
-    <div class="hero-body"></div>
-  </section> --}}
-{{!-- 
-  <section class="section">
-    <div class="container">
-      <div class="columns is-vcentered">
-        <div class="hero-body"></div>
-        <p class="title">
-          Hero title
-        </p>
-        <p class="subtitle">
-          Hero subtitle
-        </p>
-      </div>
-    </div>
-  </section> --}}
+  </header>
 
-  <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        {{!--commenting this out <a class="page-title" href="/">Min-Go</a> --}}
-      </h1>
+
+
       <nav>
         <a href="/profile">Profile</a> |
         {{#if logged_in}}
@@ -168,4 +72,5 @@
   <script src="/js/logout.js"></script>
   {{/if}}
 </body>
-</html> 
+
+</html>
