@@ -3,7 +3,7 @@ const { Meetup, User, UserMeetup } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // get all meetups
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const meetupData = await Meetup.findAll()
         const meetups = meetupData.map((meetup) => meetup.get({ plain: true }));
