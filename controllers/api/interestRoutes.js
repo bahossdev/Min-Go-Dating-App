@@ -20,27 +20,10 @@ const upload = multer({
   limits: { fileSize: 5000000 }
 }).single('interest');
 
-//Get all interest
-// router.get('/', withAuth, async (req, res) => {
-//   try {
-//     const interestData = await Interest.findAll();
-
-//     const interests = interestData.map((interest) => interest.get({ plain: true }));
-//     // res.status(200).json(interestData);
-//     console.log(interests);
-//     res.render('interests', {
-//       interests,
-//       logged_in: req.session.logged_in
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   };
-// });
-
-// // router for rendering the page to create a new interest 
-// router.get('/createInterest', (req, res) => {
-//   res.render('createInterest');
-// });
+// router for rendering the page to create a new interest 
+router.get('/createInterest', (req, res) => {
+  res.render('createInterest');
+});
 
 //Get all interest
 router.get('/', withAuth, async (req, res) => {
