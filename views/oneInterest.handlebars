@@ -1,10 +1,11 @@
-<h2>
+<h2 class="page-title">
     {{interest.interest_name}}
 </h2>
 <div>
     {{#if interest.photo }}
     <section class="card">
         <img src="{{interest.photo}}" class="thumbnail">
+        {{!-- heart button --}}
         <button class="heart-button {{#if interest.userHasInterest}}active{{else}}inactive{{/if}}" id="heart-button"
             data-interest-id="{{interest.id}}">
             &#x2665;

@@ -1,26 +1,26 @@
-<h2>Interests and Hobbies:</h2>
+<h2 class="page-title">Interests and Hobbies:</h2>
 <div class="row">
     {{#each interests as |interest|}}
     <div class="col-md-4 mb-4 interest">
         <section class="card">
-            <a class="title" href="/api/interests/{{interest.id}}">
-                {{#if interest.photo }}
-                <img src="{{interest.photo}}" class="thumbnail">
+            <a class="title" href="/api/interests/{{interest.dataValues.id}}">
+                {{#if interest.dataValues.photo }}
+                <img src="{{interest.dataValues.photo}}" class="thumbnail">
                 {{else}}
                 <img src="/upload/interests/no-photo.jpg" class="thumbnail">
                 {{/if}}
-                <h3 class="text-center">{{interest.interest_name}}</h3>
+                <h3 class="text-center">{{interest.dataValues.interest_name}}</h3>
             </a>
-        {{!-- <button class="heart-button {{#if interest.userHasInterest}}active{{else}}inactive{{/if}}" id="heart-button"
-            data-interest-id="{{interest.id}}">
-            &#x2665;
-        </button> --}}
-        {{#if interest.userHasInterest}}
-                <button class="heart-button active" id="heart-button"
-            data-interest-id="{{interest.id}}">
-            &#x2665;
-        </button>
-        {{/if}}
+            {{!-- heart button --}}
+            <button class="heart-button {{#if interest.userHasInterest}}active{{else}}inactive{{/if}}" id="heart-button"
+                data-interest-id="{{interest.dataValues.id}}">
+                &#x2665;
+            </button>
+            {{#if interest.userHasInterest}}
+            <button class="heart-button active" id="heart-button" data-interest-id="{{interest.dataValues.id}}">
+                &#x2665;
+            </button>
+            {{/if}}
         </section>
     </div>
     {{/each}}
@@ -33,7 +33,7 @@
 
 
     <a href="/">
-        <button class="btn btn-primary-homepage" >Back to HomePage</button>
+        <button class="btn btn-primary-homepage">Back to HomePage</button>
     </a>
 
-<script src="/js/heart.js"></script>
+    <script src="/js/heartAll.js"></script>

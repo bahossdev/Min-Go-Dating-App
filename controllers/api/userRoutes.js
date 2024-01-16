@@ -56,6 +56,7 @@ router.get('/:id', withAuth, async (req, res) => {
   };
 });
 
+// For retrieving saved info when updating user profile
 router.get('/:id/update', withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id)
@@ -83,7 +84,6 @@ router.get('/:id/update', withAuth, async (req, res) => {
 router.post('/', async (req, res) => {
   try {
 
-    // req.session.user
     const userData = await User.create(req.body);
 
     req.session.save(() => {
@@ -91,24 +91,6 @@ router.post('/', async (req, res) => {
       req.session.logged_in = true;
     });
 
-    // if (req.body.interests.length) {
-    //   const userInterestArray = req.body.interests.map((interest_id) => {
-    //     return {
-    //       user_id: userData.id,
-    //       interest_id,
-    //     };
-    //   });
-    //   await UserInterest.bulkCreate(userInterestArray);
-    // }
-    // if (req.body.meetups.length) {
-    //   const userMeetupArray = req.body.meetups.map((meetup_id) => {
-    //     return {
-    //       user_id: userData.id,
-    //       meetup_id,
-    //     };
-    //   });
-    //   await UserMeetup.bulkCreate(userMeetupArray);
-    // }
     res.status(200).json(userData);
 
   } catch (err) {
@@ -118,17 +100,9 @@ router.post('/', async (req, res) => {
 });
 
 // Update a user
-// withAuth
 router.put('/:id', withAuth, async (req, res) => {
   try {
 
-    // // this object can be accessed from anywhere in the back end and returned
-    // // to the front end
-
-    // req.session.user = req.body.user_id
-
-    // // this return to the front end 
-    // res.send(req.session)
     const userData = await User.update(req.body, {
       where: {
         id: req.params.id,

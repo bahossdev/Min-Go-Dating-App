@@ -16,7 +16,6 @@ const storage = multer.diskStorage({
 const upload = multer({
   storage: storage,
   fileFilter: function (req, file, cb) {
-    // Call the checkFileType function here if needed
     cb(null, true);
   },
   limits: { fileSize: 5000000 }
@@ -80,8 +79,9 @@ router.post('/profile/upload', withAuth, (req, res) => {
   });
 });
 
+// login
 router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
+  // If the user is already logged in, redirect them to homepage 
   if (req.session.logged_in) {
     res.redirect('/homepage');
     return;
@@ -90,6 +90,7 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+//signup
 router.get('/signup', (req, res) => {
   try {
     res.render('signup');

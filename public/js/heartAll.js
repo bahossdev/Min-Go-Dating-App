@@ -34,7 +34,7 @@ const toggleHeart = async (event) => {
       throw new Error(`Error: ${response.status} - ${response.statusText}`);
     }
     if (response.ok) {
-      document.location.replace(`/api/interests/${interestId}`);
+      document.location.replace(`/api/interests/`);
       console.log(action);
   } else {
       alert(response.statusText);
@@ -46,4 +46,7 @@ const toggleHeart = async (event) => {
   }
 };
 
-document.querySelector('.heart-button').addEventListener('click', toggleHeart);
+const hearts = document.querySelectorAll('.heart-button');
+console.log(hearts);
+const heart = [...hearts].map((h) => h.addEventListener('click', toggleHeart))
+

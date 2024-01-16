@@ -8,13 +8,10 @@ const userId = document.cookie
 const toggleJoin = async (event) => {
   event.preventDefault();
   const button = event.target;
-
-  // Get the meetup id from the clicked button
   const meetupId = button.getAttribute('data-meetup-id');
   const isActive = button.classList.contains('active');
   console.log(meetupId);
 
-  // Determine the action based on the current state
   const action = isActive ? 'remove' : 'add';
   
   try {

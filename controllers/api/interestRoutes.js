@@ -21,12 +21,57 @@ const upload = multer({
 }).single('interest');
 
 //Get all interest
+// router.get('/', withAuth, async (req, res) => {
+//   try {
+//     const interestData = await Interest.findAll();
+
+//     const interests = interestData.map((interest) => interest.get({ plain: true }));
+//     // res.status(200).json(interestData);
+//     console.log(interests);
+//     res.render('interests', {
+//       interests,
+//       logged_in: req.session.logged_in
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   };
+// });
+
+// // router for rendering the page to create a new interest 
+// router.get('/createInterest', (req, res) => {
+//   res.render('createInterest');
+// });
+
+//Get all interest
 router.get('/', withAuth, async (req, res) => {
   try {
-    const interestData = await Interest.findAll();
+    const interestData = await Interest.findAll(
+      {
+      include: [
+        {
+          model: User,
+          through: UserInterest,
+          attributes: {
+            exclude: ['password']
+          },
+        },
+      ],
+    }
+    );
+    console.log(interestData);
 
-    const interests = interestData.map((interest) => interest.get({ plain: true }));
+    const interests = interestData.map((interest) => {
+
+      interest.get({ plain: true });
+      console.log(interest.users);
+      if (req.session.user_id) {
+        interest.userHasInterest = interest.users.some(user => user.dataValues.id == req.session.user_id);
+      }
+      return interest;
+      console.log(interest);
+    });
     // res.status(200).json(interestData);
+    console.log(interests);
     res.render('interests', {
       interests,
       logged_in: req.session.logged_in
@@ -34,11 +79,6 @@ router.get('/', withAuth, async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   };
-});
-
-// router for rendering the page to create a new interest 
-router.get('/createInterest', (req, res) => {
-  res.render('createInterest');
 });
 
 //Get a single interest
@@ -78,7 +118,7 @@ router.get('/:id', withAuth, async (req, res) => {
   };
 });
 
-// //Create new interest with/out image
+// Create new interest with/out image
 router.post('/', withAuth, async (req, res) => {
   try {
     upload(req, res, async (err) => {
