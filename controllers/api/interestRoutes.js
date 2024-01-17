@@ -111,7 +111,7 @@ router.post('/', withAuth, async (req, res) => {
 
       // Check if a file is selected
       if (req.file) {
-        req.body.photo = `/upload/interests/${req.file.filename}`;
+        req.body.photo = `/${req.file.filename}`;
       }
 
       const interestData = await Interest.create(req.body);
