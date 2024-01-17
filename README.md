@@ -11,7 +11,7 @@
 Min-Go is a dating app; a platform that prioritizes genuine connections. By focusing on common interests, we help you break the ice and create a foundation for lasting relationships. Say farewell to aimless swiping, and welcome a dating experience that aligns with your lifestyle.
 
 ## Description
-Say goodbye to wasted time on incompatible dates! Min-Go, the dating app, is designed to foster meaningful connections based on shared interests. Whether you have niche hobbies or broad passions, Min-Go ensures that your matches are curated for meaningful connections centered around activities you both enjoy. Spend more time doing what you love together and increase your chances of finding a soulmate who shares your interests.
+Say goodbye to wasted time on incompatible dates! Min-Go, the dating app, is designed to foster meaningful connections based on shared interests. Whether you have niche hobbies or broad passions, Min-Go ensures that your matches are curated for meaningful connections centred around activities you both enjoy. Spend more time doing what you love together and increase your chances of finding a soulmate who shares your interests.
 
 ## Table of Contents
 
@@ -88,5 +88,6 @@ Happy dating with Min-Go!
 
 ## Screenshots
 ![screenshot1](https://github.com/bahossdev/Min-Go-Dating-App/assets/148646212/6c04ff8e-28af-4163-b37e-1bd9d7f670b8)
+![screenshot2](https://github.com/bahossdev/Min-Go-Dating-App/assets/148646212/a4c783ba-3282-475f-af12-bbee3e5f3d16)
+![screenshot](https://github.com/bahossdev/Min-Go-Dating-App/assets/148646212/5dbb6216-21a8-431a-b07c-dc82ab0355bf)
 
-![screenshot2](https://github.com/bahossdev/Min-Go-Dating-App/assets/148646212/16d2d2e2-7876-4272-a121-74f4456c029a)
