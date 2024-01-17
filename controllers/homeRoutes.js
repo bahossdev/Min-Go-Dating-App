@@ -67,7 +67,7 @@ router.post('/profile/upload', withAuth, (req, res) => {
         return res.render('profile', { msg: 'No file selected' });
       }
 
-      const filePath = `/upload/${req.file.filename}`;
+      const filePath = `/${req.file.filename}`;
 
       await User.update({ photo: filePath }, { where: { id: req.session.user_id } });
 
