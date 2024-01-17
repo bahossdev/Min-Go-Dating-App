@@ -59,6 +59,42 @@
     "education": "Bachelors",
     "email": "sk8ergirl@gmail.com",
     "password": "1234567"
+  },
+  {
+    "first_name": "Mary",
+    "last_name": "Johnson",
+    "photo": "/upload/mary.jpg",
+    "age": 31,
+    "gender": "Other",
+    "location": "Waterloo",
+    "status": "Single",
+    "education": "College",
+    "email": "mary@email.com",
+    "password": "1234567"
+  },
+  {
+    "first_name": "Rebecca",
+    "last_name": "McDonald",
+    "photo": "/upload/rebecca.jpg",
+    "age": 45,
+    "gender": "Female",
+    "location": "Milton",
+    "status": "Divorced/Widowed",
+    "education": "Masters",
+    "email": "rebecca@email.com",
+    "password": "1234567"
+  },
+  {
+    "first_name": "David",
+    "last_name": "Holmes",
+    "photo": "/upload/david.jpg",
+    "age": 53,
+    "gender": "Male",
+    "location": "Toronti",
+    "status": "Single",
+    "education": "Doctorate",
+    "email": "david@email.com",
+    "password": "1234567"
   }
 ]
 

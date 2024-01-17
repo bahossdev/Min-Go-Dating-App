@@ -18,15 +18,17 @@
     {{/if}}
 </div>
 
-{{!-- show users who have added this interest --}}
-<div>
-    <h3>Members who enjoy {{interest.interest_name}}:</h3>
+{{!-- show members who have added this interest --}}
+<div class="card text-left">
+    <h4><strong>Members Who Enjoy {{interest.interest_name}}:</strong></h4>
     {{#if interest.users}}
     {{#each interest.users as |user|}}
-    <div class="row mb-4 userInterest">
+    <div class="row mb-4">
         <div class="col-md-5">
-            <h4>
-                <a class="title" href="/api/users/{{user.id}}"> {{user.first_name}} {{user.last_name}}</a>
+            <h4 id="list-border-meetup">
+                <a class="user-list" href="/api/users/{{user.id}}"> 
+                <img src="{{user.photo}}" class="small"> {{user.first_name}} {{user.last_name}}
+                </a>
             </h4>
         </div>
     </div>
@@ -34,10 +36,10 @@
     {{else}}
     <p style="font-style: italic;">No member has added this interest yet.</p>
     {{/if}}
-</div>
 
 <a href="/api/interests">
     <button class="btn btn-primary-homepage">Back to All Interests</button>
 </a>
+</div>
 
 <script src="/js/heart.js"></script>

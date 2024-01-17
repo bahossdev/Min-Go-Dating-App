@@ -2,33 +2,39 @@
     {{meetup.title}}
 </h2>
 <br>
-<h2>Description:</h2>
-<p>{{meetup.description}}</p>
-<h2>Date and Time:</h2>
-<p>{{format_date meetup.date}} at {{meetup.time}}</p>
-{{!-- {{#if meetup.owner_id}}
-<p class="owner">Created by
-    {{meetup.users.first_name}} --}}
-    {{!-- on {{format_date meetup.date_created}}</p> --}}
-{{!-- {{/if}} --}}
+<div class="card text-left">
+    <h2><strong>Description:</strong></h2>
+    <p>{{meetup.description}}</p>
+    <h4><strong>Date and Time:</strong></h4>
+    <p>{{format_date meetup.date}} at {{meetup.time}}</p>
+    {{!-- {{#if meetup.owner_id}}
+    <p class="owner">Created by
+        {{meetup.users.first_name}} --}}
+        {{!-- on {{format_date meetup.date_created}}</p> --}}
+    {{!-- {{/if}} --}}
 
-{{#if meetup.userJoined}}
-<p>You have joined to this meetup. Have fun! 🤩
-    <button type="submit" class="btn btn-danger join
+    {{#if meetup.userJoined}}
+    <p>You have joined to this meetup. Have fun! 🤩
+        <button type="submit" class="btn btn-danger join
     active" id="join" data-meetup-id="{{meetup.id}}">Unattend</button>
-</p>
-{{else}}
-<p>Would you like to go?
-    <button type="submit" class="btn btn-primary join inactive" id="join" data-meetup-id="{{meetup.id}}">Attend</button>
-</p>
-{{/if}}
-
-<h3>Members who are going to this meetup:</h3>
+    </p>
+    {{else}}
+    <p>Would you like to go?
+        <button type="submit" class="btn btn-primary join inactive" id="join"
+            data-meetup-id="{{meetup.id}}">Attend</button>
+    </p>
+    {{/if}}
+</div>
+{{!-- show members who have joined this meetup --}}
+<div class="card text-left">
+<h4><strong>Members Attending this Meetup:</strong></h4>
 {{#each meetup.users as |user|}}
-<div class="row mb-4 userMeetup">
+<div class="row mb-4">
     <div class="col-md-5">
         <h4 id="list-border-meetup">
-            <a class="title" href="/api/users/{{user.id}}"> {{user.first_name}} {{user.last_name}}</a>
+            <a class="user-list" href="/api/users/{{user.id}}"> 
+            <img src="{{user.photo}}" class="small">
+            {{user.first_name}} {{user.last_name}}</a>
         </h4>
     </div>
 </div>
@@ -37,6 +43,7 @@
 <a href="/api/meetups">
     <button class="btn btn-primary-homepage">Back to All Meetups</button>
 </a>
+</div>
 
 <link rel="stylesheet" href="Project 2/Min-Go-Dating-App/public/css/style.css">
 <script src="/js/joinMeetup.js"></script>

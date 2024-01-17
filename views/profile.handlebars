@@ -33,7 +33,7 @@
 </div>
 
 {{!-- Display user's meetups and interests --}}
-<div class="row mt-4" id="list-border">
+<div class="row mt-4 " id="list-border">
     <!-- Display user interests if available -->
     {{#if interests.length}}
     <div class="col-md-6 interest-list">
@@ -79,7 +79,7 @@
 
 <!-- Form for updating user info -->
 <div class="col-md-6">
-    <form class="form update-user-form" id="update-form" style="display: none;">
+    <form class="form update-user-form card text-left" id="update-form" style="display: none;">
 
         {{!-- first-name --}}
         <div class="form-group">
@@ -158,7 +158,7 @@
 
 <!-- Form for adding new Meetup -->
 <div>
-    <form class="form meetup-form" id="meetup-form" style="display: none;">
+    <form class="form meetup-form card text-left" id="meetup-form" style="display: none;">
         {{!-- meetup title --}}
         <div class="form-group">
             <label for="title">Meetup Title:</label>

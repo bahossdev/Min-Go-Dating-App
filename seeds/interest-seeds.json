@@ -4,6 +4,10 @@
     "photo": "/upload/interests/art.jpg"
   },
   {
+    "interest_name": "Baking",
+    "photo": "/upload/interests/baking.jpg"
+  },
+  {
     "interest_name": "Camping",
     "photo": "/upload/interests/camping.jpg"
   },
@@ -72,6 +76,10 @@
     "photo": "/upload/interests/rock.jpg"
   },
   {
+    "interest_name": "Soccer",
+    "photo": "/upload/interests/soccer.jpg"
+  },
+  {
     "interest_name": "Tennis",
     "photo": "/upload/interests/tennis.jpg"
   },
@@ -79,4 +87,5 @@
     "interest_name": "Yoga",
     "photo": "/upload/interests/yoga.jpg"
   }
+
 ]
