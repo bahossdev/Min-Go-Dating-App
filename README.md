@@ -24,6 +24,7 @@ Say goodbye to wasted time on incompatible dates! Min-Go, the dating app, is des
 - [Deployment](#deployment)
 - [Repository](#repository)
 - [Questions](#questions)
+- [Screenshots](#screenshots)
 
 ## Features
 
@@ -84,3 +85,8 @@ Please refer to the licsense in the repository for detailed information on the l
 
 If you have any questions or need further assistance, feel free to reach out to us by email [BO](mailto:bahoss.dev@gmail.com), [PK](mailto:pjassakoch@gmail.com), and [KS](mailto:shahkun01@gmail.com).
 Happy dating with Min-Go!
+
+## Screenshots
+![screenshot1](https://github.com/bahossdev/Min-Go-Dating-App/assets/148646212/6c04ff8e-28af-4163-b37e-1bd9d7f670b8)
+
+![screenshot2](https://github.com/bahossdev/Min-Go-Dating-App/assets/148646212/16d2d2e2-7876-4272-a121-74f4456c029a)
